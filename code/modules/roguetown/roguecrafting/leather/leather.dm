@@ -51,7 +51,7 @@
 /datum/crafting_recipe/roguetown/leather/heavygloves
 	name = "heavy leather gloves"
 	result = /obj/item/clothing/gloves/roguetown/angle
-	reqs = list(/obj/item/natural/fur = 1)
+	reqs = list(/obj/item/natural/hide/cured = 2)
 	sellprice = 20
 	craftdiff = 3
 
@@ -59,12 +59,10 @@
 	name = "fingerless leather gloves"
 	result = /obj/item/clothing/gloves/roguetown/fingerless_leather
 	reqs = list(
-		/obj/item/natural/hide/cured = 1,
-		/obj/item/reagent_containers/food/snacks/tallow = 1,
-		/obj/item/natural/fibers = 1,
+		/obj/item/natural/hide/cured = 1
 		)
 	sellprice = 20
-	craftdiff = 1
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/bandana
 	name = "leather bandana"

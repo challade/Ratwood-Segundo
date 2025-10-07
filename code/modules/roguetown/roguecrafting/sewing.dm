@@ -1037,7 +1037,7 @@
 	name = "otavan gambeson"
 	result = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan)
 	reqs = list(/obj/item/natural/cloth = 5,
-	            /obj/item/natural/silk = 2
+	            /obj/item/natural/silk = 2,
 	            /obj/item/natural/fibers = 2)
 	tools = list(/obj/item/needle)
 	craftdiff = 6
