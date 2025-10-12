@@ -495,6 +495,11 @@
 /obj/item/natural/bundle/bone/full
 	amount = 6
 
+/obj/item/natural/bundle/bone/rdm
+
+/obj/item/natural/bundle/bone/rdm/Initialize()
+	..()
+	amount = rand(2,6)
 /*/obj/item/natural/bone/attackby(obj/item/I, mob/living/user, params)
 	var/mob/living/carbon/human/H = user
 	user.changeNext_move(CLICK_CD_MELEE)

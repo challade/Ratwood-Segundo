@@ -57,9 +57,11 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/eyebite)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bonechill)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/minion_order)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/command_undead)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/gravemark)
+
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead_formation/necromancer)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_lesser_undead/necromancer)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/convert_heretic)
-		H.mind.adjust_spellpoints(18)
+
+		H.mind.adjust_spellpoints(12)
 	wretch_select_bounty(H)

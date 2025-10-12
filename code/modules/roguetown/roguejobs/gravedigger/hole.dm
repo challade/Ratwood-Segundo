@@ -78,8 +78,10 @@
 		switch(lootroll)
 			if(1)
 				new /mob/living/carbon/human/species/skeleton/npc(mastert)
+				new /obj/item/natural/bundle/bone/rdm
 			if(2)
 				new /obj/structure/closet/crate/chest/lootbox(mastert)
+				new /obj/item/natural/bundle/bone/rdm
 	..()
 
 /obj/structure/closet/dirthole/closed/loot/examine(mob/user)
@@ -323,7 +325,7 @@
 			if(!(locate(/obj/item/natural/stone) in T) || !(locate(/obj/item/natural/clay) in T))
 				if(prob(23))
 					new /obj/item/natural/stone(T)
-				if(prob(18))	
+				if(prob(18))
 					new /obj/item/natural/clay(T)
 	return ..()
 
