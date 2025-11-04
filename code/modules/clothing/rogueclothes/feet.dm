@@ -24,12 +24,17 @@
 	item_state = "blackboots"
 	max_integrity = 80
 	sewrepair = TRUE
-	var/atom/movable/holdingknife = null
 	salvage_amount = 1
-	armor = ARMOR_CLOTHING
+	armor = ARMOR_BOOTS_BAD
+	var/atom/movable/holdingknife = null
+	var/atom/movable/holdinglockpick = null
+
+/obj/item/clothing/shoes/roguetown/boots/examine()
+	. = ..()
+	. += span_smallnotice("Knives and lockpicks can be stowed inside.")
 
 /obj/item/clothing/shoes/roguetown/boots/attackby(obj/item/W, mob/living/carbon/user, params)
-	if(istype(W, /obj/item/rogueweapon/huntingknife/throwingknife))
+	if(istype(W, /obj/item/rogueweapon/huntingknife))
 		if(holdingknife == null)
 			for(var/obj/item/clothing/shoes/roguetown/boots/B in user.get_equipped_items(TRUE))
 				to_chat(loc, span_warning("I quickly slot [W] into [B]!"))
@@ -37,17 +42,40 @@
 				holdingknife = W
 				playsound(loc, 'sound/foley/equip/swordsmall1.ogg')
 		else
-			to_chat(loc, span_warning("My boot already holds a throwing knife."))
+			to_chat(loc, span_warning("My boot already holds a knife."))
+
+	if(istype(W, /obj/item/lockpick))
+		if(holdinglockpick == null)
+			for(var/obj/item/clothing/shoes/roguetown/boots/B in user.get_equipped_items(TRUE))
+				to_chat(loc, span_warning("I quickly slot [W] into [B]!"))
+				user.transferItemToLoc(W, holdinglockpick)
+				holdinglockpick = W
+				playsound(loc, 'sound/foley/equip/rummaging-01.ogg')
+		else
+			to_chat(loc, span_warning("My boot already holds a lockpick."))
+
 		return
 	. = ..()
 
 /obj/item/clothing/shoes/roguetown/boots/attack_right(mob/user)
 	if(holdingknife != null)
-		if(!user.get_active_held_item())
-			user.put_in_active_hand(holdingknife, user.active_hand_index)
-			holdingknife = null
-			playsound(loc, 'sound/foley/equip/swordsmall1.ogg')
-			return TRUE
+		user.visible_message(span_warning("[user] is drawing something from [src]!"), span_warning("I begin drawing a knife from [src]!"))
+		if(do_after(user, 2 SECONDS))
+			if(!user.get_active_held_item())
+				user.put_in_active_hand(holdingknife, user.active_hand_index)
+				holdingknife = null
+				playsound(loc, 'sound/foley/equip/swordsmall1.ogg')
+				return TRUE
+
+/obj/item/clothing/shoes/roguetown/boots/MiddleClick(mob/user)
+	if(holdinglockpick != null)
+		user.visible_message(span_warning("[user] is drawing something from [src]!"), span_warning("I begin drawing a lockpick from [src]!"))
+		if(do_after(user, 2 SECONDS))
+			if(!user.get_active_held_item())
+				user.put_in_active_hand(holdinglockpick, user.active_hand_index)
+				holdinglockpick = null
+				playsound(loc, 'sound/foley/equip/rummaging-01.ogg')
+				return TRUE
 
 /obj/item/clothing/shoes/roguetown/boots/aalloy
 	name = "decrepit boots"

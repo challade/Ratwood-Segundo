@@ -259,6 +259,10 @@
 	new /obj/item/ash(T)
 	qdel(src)
 
+/obj/item/grenade/smokebomb
+    parent_type = /obj/item/bomb/smoke
+
+
 /obj/item/tntstick
 	name = "blastpowder stick"
 	desc = "A bit of blastpowder in paper shell..."
@@ -321,8 +325,8 @@
 			else
 				explosion(T, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 4, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 				loud_message("A muted explosion echos in the ears of those whom hear it", hearing_distance = 14)
-				qdel(src) //go into walls /turf/closed/wall/ and see /turf/closed/wall/ex_act. Its bounded with /proc/explosion
-		else
+				qdel(src) //IMPORTANT!! go into walls /turf/closed/wall/ and see /turf/closed/wall/ex_act. Its bounded with /proc/explosion. Same for /obj/structure and /obj/structure/ex_act because if you going to fuck intergity or whatever this shit called players will skin you alive for breaking their equipment and keys
+		else //also /turf/open/floor/ex_act for comment above
 			if(prob(prob2fail))
 				snuff()
 

@@ -200,7 +200,6 @@
 	var/used
 	var/total_dam = get_damage()
 	var/damage_dividend = (total_dam / max_damage)
-
 	if(user && dam)
 		if(user.goodluck(2))
 			dam += 10
@@ -262,6 +261,17 @@
 			owner.next_attack_msg += span_crit(" Critical resistance! [owner] resists a wound!</span>")
 		return TRUE
 
+	// Check if critical resistance applies
+	var/has_crit_attempt = length(attempted_wounds)
+	if(!has_crit_attempt)
+		return FALSE
+
+	if(owner.try_resist_critical())
+		if(crit_message)
+			owner.next_attack_msg.Cut()
+			owner.next_attack_msg += span_crit(" Critical resistance! [owner] resists a wound!</span>")
+		return TRUE
+
 	for(var/wound_type in shuffle(attempted_wounds))
 		var/datum/wound/applied = add_wound(wound_type, silent, crit_message)
 		if(applied)
@@ -302,7 +312,7 @@
 		if(prob(used))
 			attempted_wounds += fracture_type
 	if(bclass in GLOB.artery_bclasses)
-		used = round(damage_dividend * 20 + (dam / 4))		
+		used = round(damage_dividend * 20 + (dam / 4))
 		if(user)
 			if((bclass in GLOB.artery_strong_bclasses) && istype(user.rmb_intent, /datum/rmb_intent/strong))
 				used += 10
@@ -316,7 +326,7 @@
 			else
 				attempted_wounds += /datum/wound/artery
 	if(bclass in GLOB.whipping_bclasses)
-		used = round(damage_dividend * 20 + (dam / 4))		
+		used = round(damage_dividend * 20 + (dam / 4))
 		if(user)
 			if(istype(user.rmb_intent, /datum/rmb_intent/strong))
 				dam += 10
@@ -330,6 +340,17 @@
 			used = round(damage_dividend * 20 + (dam / 2))
 			if(prob(used))
 				attempted_wounds += list(/datum/wound/sunder/chest)
+
+	// Check if critical resistance applies
+	var/has_crit_attempt = length(attempted_wounds)
+	if(!has_crit_attempt)
+		return FALSE
+
+	if(owner.try_resist_critical())
+		if(crit_message)
+			owner.next_attack_msg.Cut()
+			owner.next_attack_msg += span_crit(" Critical resistance! [owner] resists a wound!</span>")
+		return TRUE
 
 	// Check if critical resistance applies
 	var/has_crit_attempt = length(attempted_wounds)
@@ -452,6 +473,33 @@
 			used = round(damage_dividend * 20 + (dam / 2), 1)
 			if(prob(used))
 				attempted_wounds += /datum/wound/sunder/head
+
+	var/has_crit_attempt = length(attempted_wounds) || try_knockout
+	if(!has_crit_attempt)
+		return FALSE
+
+	var/resist_msg = " [owner] resists"
+	if(attempted_wounds && try_knockout)
+		resist_msg += " a wound and a knockout!</span>"
+	else if(attempted_wounds)
+		resist_msg += " a wound!</span>"
+	else if(try_knockout)
+		resist_msg += " a knockout!</span>"
+
+	if(owner.try_resist_critical())
+		if(crit_message)
+			owner.next_attack_msg.Cut()
+			owner.next_attack_msg += span_crit(" Critical resistance!" + resist_msg)
+		return TRUE
+
+	// We want to apply knockout AFTER resistance check so you don't need two rolls to resist.
+	if(try_knockout)
+		owner.next_attack_msg += " <span class='crit'><b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!</span>"
+		owner.flash_fullscreen("whiteflash3")
+		owner.Unconscious(5 SECONDS + (from_behind * 10 SECONDS))
+		if(owner.client)
+			winset(owner.client, "outputwindow.output", "max-lines=1")
+			winset(owner.client, "outputwindow.output", "max-lines=100")
 
 	var/has_crit_attempt = length(attempted_wounds) || try_knockout
 	if(!has_crit_attempt)

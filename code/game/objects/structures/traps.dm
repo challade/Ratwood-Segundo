@@ -225,7 +225,7 @@
 /obj/structure/trap/chill/trap_effect(mob/living/L)
 	to_chat(L, span_danger("<B>You're frozen solid!</B>"))
 	L.Paralyze(20)
-	L.adjust_bodytemperature(-300)
+	L.adjust_bodytemperature(-400)
 	L.apply_status_effect(/datum/status_effect/freon)
 
 /obj/structure/trap/damage
@@ -433,9 +433,9 @@
 	name = "mantrap"
 	time_between_triggers = 100 //feel free to add more than 1 use
 	max_integrity = 100
-	trap_damage = 50
+	trap_damage = 60
 	alpha = 60
-	charges = 1 //feel free to add more than 1 use
+	charges = 2 //feel free to add more than 1 use
 
 	var/tmp/list/personal_reveal_images = list()
 	var/bandit_reveal_alpha = 140
@@ -484,7 +484,6 @@
 	if(HAS_TRAIT(H, TRAIT_HEAVYARMOR))  return TRUE
 	if(HAS_TRAIT(H, TRAIT_DODGEEXPERT)) return TRUE
 	if(HAS_TRAIT(H, TRAIT_CRITICAL_RESISTANCE)) return TRUE
-
 	return FALSE
 
 /obj/structure/trap/bogtrap/proc/is_trap_exception(mob/living/H)

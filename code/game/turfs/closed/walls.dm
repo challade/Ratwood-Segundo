@@ -65,7 +65,6 @@
 		if(target == src)
 			dismantle_wall(1, 1)
 			return
-			
 		switch(severity)
 			if(EXPLODE_DEVASTATE)
 				var/turf/NT = ScrapeAway()

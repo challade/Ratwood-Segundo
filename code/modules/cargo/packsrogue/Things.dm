@@ -18,6 +18,11 @@
 	cost = 5
 	contains = list(/obj/item/rope/chain)
 
+/datum/supply_pack/rogue/Things/Satchel
+	name = "Satchel"
+	cost = 12
+	contains = list(/obj/item/storage/backpack/rogue/satchel)
+
 /datum/supply_pack/rogue/Things/needle
 	name = "Needle"
 	cost = 5
@@ -27,6 +32,11 @@
 	name = "Lamptern"
 	cost = 5
 	contains = list(/obj/item/flashlight/flare/torch/lantern)
+
+/datum/supply_pack/rogue/Things/Backpack
+	name = "backpack"
+	cost = 25
+	contains = list(/obj/item/storage/backpack/rogue/backpack)
 
 /datum/supply_pack/rogue/Things/hknife
 	name = "Hunting Knife"

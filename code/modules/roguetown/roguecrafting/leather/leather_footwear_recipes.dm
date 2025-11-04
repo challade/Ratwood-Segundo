@@ -11,6 +11,8 @@
 	name = "leather boots"
 	result = /obj/item/clothing/shoes/roguetown/boots/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
+	sellprice = 27
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/footwear/boots_heavy
 	name = "heavy leather boots"
@@ -31,19 +33,23 @@
 	result = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fur = 1)
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/footwear/boots/short
 	name = "shortboots"
 	result = /obj/item/clothing/shoes/roguetown/shortboots
 	reqs = list(/obj/item/natural/hide/cured = 1)
+	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/leather/footwear/boots/dark
 	name = "dark boots"
 	result = /obj/item/clothing/shoes/roguetown/boots
 	reqs = list(/obj/item/natural/hide/cured = 1)
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/footwear/boots/noble
 	name = "noble boots"
 	result = /obj/item/clothing/shoes/roguetown/boots/nobleboot
 	reqs = list(/obj/item/natural/hide/cured = 3,
 				/obj/item/natural/fur = 1)
+	craftdiff = 4

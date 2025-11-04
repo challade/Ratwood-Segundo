@@ -213,7 +213,7 @@ GLOBAL_LIST_EMPTY(explosions)
 			new /obj/effect/hotspot(T) //Mostly for ambience!
 
 		if(dist > EXPLODE_NONE)
-			T.explosion_level = max(T.explosion_level, dist)	//let the bigger one have it
+			T.explosion_level = max(T.explosion_level, dist) //let the bigger one have it
 			T.explosion_id = id
 			if(istype(T, /turf/closed/wall))
 				var/turf/closed/wall/W = T
