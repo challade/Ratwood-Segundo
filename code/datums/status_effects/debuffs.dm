@@ -472,6 +472,7 @@
 
 	msg_stage++
 
+
 /datum/status_effect/debuff/baited
 	id = "bait"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/baited
@@ -850,3 +851,40 @@
 /datum/status_effect/debuff/mishap_confused/on_remove()
 	owner.confused = max(owner.confused - confusion_amount, 0)
 	..()
+/datum/status_effect/debuff/crit_resistance_cd
+	id = "crit_resist_cd"
+	duration = CRIT_RESISTANCE_TIMER_CD
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/crit_resistance_cd
+	var/my_stack = 1 // How many time it was triggered. Default to 1 because this is only created when it triggers
+
+// Helper, call this everytime you try to crit
+/datum/status_effect/debuff/crit_resistance_cd/proc/try_crit()
+	my_stack++
+	if(!owner) // wtf
+		return TRUE
+	if(owner.stat) // Dead / Unconscious
+		return TRUE
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		if(NOBLOOD in C.dna?.species?.species_traits)
+			return (my_stack > CRIT_RESISTANCE_STACKS_OP)
+	if(isdullahan(owner))
+		return (my_stack > CRIT_RESISTANCE_STACKS_OP)
+	if(!owner.mind)
+		return (my_stack > CRIT_RESISTANCE_STACKS_NPC)
+	return (my_stack > CRIT_RESISTANCE_STACKS_PLAYER)
+
+/atom/movable/screen/alert/status_effect/debuff/crit_resistance_cd
+	name = "Critical Resistance"
+	desc = "My body is temporarily resisting critical wounds."
+	icon_state = "debuff"
+
+/datum/status_effect/debuff/yeetcd
+	id = "yeetcd"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/yeetcd
+	duration = 5 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/yeetcd
+	name = "Knockback Cooldown"
+	desc = "I have been knocked back recently by an attack and cannot be knocked back again"
+	icon_state = "debuff" // Placeholder
