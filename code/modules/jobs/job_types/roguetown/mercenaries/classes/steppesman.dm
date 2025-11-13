@@ -8,10 +8,10 @@
 	outfit = /datum/outfit/job/roguetown/mercenary/steppesman
 	class_select_category = CLASS_CAT_AAVNR
 	category_tags = list(CTAG_MERCENARY)
-	cmode_music = 'sound/music/combat_steppe.ogg'
+	cmode_music = 'sound/music/combat_league.ogg'
 	subclass_languages = list(/datum/language/aavnic)
 	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame/saddled
-	extra_context = "This subclass has 4 loadouts with various stats, skills & equipment."
+	extra_context = "This subclass has 5 loadouts with various stats, skills & equipment."
 	subclass_skills = list(
 	//Universal skills
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
@@ -97,7 +97,7 @@
 				gloves = /obj/item/clothing/gloves/roguetown/chain
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/scale/steppe
 				wrists = /obj/item/clothing/wrists/roguetown/bracers
-				backl = /obj/item/rogueweapon/shield/iron/steppesman
+				backl = /obj/item/storage/backpack/rogue/backpack/bagpack
 				l_hand = /obj/item/rogueweapon/stoneaxe/battle/steppesman
 				neck = /obj/item/clothing/neck/roguetown/chaincoif
 				backpack_contents = list(
@@ -109,13 +109,13 @@
 					/obj/item/rogueweapon/scabbard/sheath
 				)
 				H.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
-				H.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 				H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
-				H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+				H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 				H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 				H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 				H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 2, TRUE)		//To avoid virtue cheese
+				H.adjust_skillrank_up_to(/datum/skill/craft/masonry, 2, TRUE)		//Ditto
 				H.adjust_skillrank_up_to(/datum/skill/craft/crafting, 2, TRUE)		//Ditto
 				H.adjust_skillrank_up_to(/datum/skill/labor/mining, 3, TRUE)		//Ditto
 				H.adjust_skillrank_up_to(/datum/skill/craft/traps, 3, TRUE)			//Ditto
