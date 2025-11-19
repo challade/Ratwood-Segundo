@@ -295,6 +295,16 @@
 	desc = "It will take a lot of time before I can perform a next rite. I am drained."
 	icon_state = "ritesexpended"
 
+/datum/status_effect/debuff/ritesexpended_lesser
+	id = "ritesexpended_lesser"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ritesexpended_lesser
+	duration = 5 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/ritesexpended_lesser
+	name = "Rites Complete"
+	desc = "It will be a short period before I can perform another rite."
+	icon_state = "ritesexpended"
+
 /datum/status_effect/debuff/call_to_arms
 	id = "call_to_arms"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/call_to_arms
@@ -735,7 +745,7 @@
 			PM.backdrop(owner)
 			PM = locate(/atom/movable/screen/plane_master/game_world_above) in owner.client.screen
 			PM.backdrop(owner)
-	
+
 /datum/status_effect/debuff/vampbite/on_remove()
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_DRUQK, id)
