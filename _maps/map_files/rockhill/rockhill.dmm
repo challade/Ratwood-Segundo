@@ -4010,11 +4010,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/beach/harbor)
 "bmn" = (
-/obj/structure/bearpelt{
-	pixel_x = -16
-	},
-/turf/open/floor/rogue/carpet,
-/area/rogue/indoors/town/manor/rockhill)
+/obj/item/reagent_containers/food/snacks/fish/oyster,
+/turf/open/water/swamp/deep,
+/area/rogue/outdoors/bograt/west)
 "bmo" = (
 /obj/structure/closet/dirthole/closed,
 /obj/structure/gravemarker,
@@ -23662,6 +23660,7 @@
 "hgJ" = (
 /obj/structure/closet/crate/chest/gold,
 /obj/machinery/light/rogue/torchholder/r,
+/obj/item/roguecoin/gold/pile,
 /turf/open/floor/rogue/tile{
 	icon_state = "linoleum"
 	},
@@ -25097,6 +25096,13 @@
 /obj/structure/chair/wood/rogue/fancy,
 /turf/open/floor/rogue/tile/masonic,
 /area/rogue/indoors/town/manor/rockhill)
+"hEd" = (
+/obj/structure/bearpelt{
+	pixel_y = -42;
+	pixel_x = -13
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors/town/warden)
 "hEf" = (
 /obj/item/roguebin/water,
 /turf/open/floor/rogue/church,
@@ -25638,6 +25644,9 @@
 /area/rogue/indoors/town/garrison)
 "hMK" = (
 /obj/structure/mannequin,
+/obj/structure/giantfur{
+	layer = 2.1
+	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor/rockhill)
 "hMN" = (
@@ -26656,6 +26665,7 @@
 	name = "Mage's Tower"
 	})
 "icc" = (
+/obj/item/roguecoin/gold/pile,
 /turf/open/floor/rogue/tile{
 	icon_state = "glyph3"
 	},
@@ -34186,8 +34196,8 @@
 /turf/open/floor/rogue/tile/harem,
 /area/rogue/indoors/town)
 "ksN" = (
-/obj/structure/table/wood/poor,
 /obj/item/reagent_containers/glass/bottle/rogue/redwine,
+/obj/structure/table/wood/poor,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor/rockhill)
 "ksX" = (
@@ -47430,6 +47440,12 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield/rockhill)
 "oFc" = (
+/obj/item/roguegem/ruby,
+/obj/item/roguegem/ruby,
+/obj/item/roguegem/violet,
+/obj/item/roguegem/yellow,
+/obj/item/roguegem/green,
+/obj/item/roguegem/blue,
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/rogue/tile{
 	icon_state = "linoleum"
@@ -54082,6 +54098,12 @@
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor/rockhill)
+"qHM" = (
+/obj/item/roguecoin/silver/pile,
+/turf/open/floor/rogue/tile{
+	icon_state = "linoleum"
+	},
+/area/rogue/under/town/basement/keep)
 "qHY" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -58780,9 +58802,7 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/rtfield/rockhill)
 "sjR" = (
-/obj/structure/bearpelt{
-	pixel_y = -16
-	},
+/obj/structure/giantfur,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/warden)
 "sjT" = (
@@ -75138,6 +75158,10 @@
 "xtR" = (
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/bath)
+"xtX" = (
+/obj/structure/giantfur/small,
+/turf/open/floor/rogue/wood,
+/area/rogue/indoors/shelter/druidgrove)
 "xuh" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 1
@@ -75194,6 +75218,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield/rockhill)
 "xvU" = (
+/obj/structure/curtain/brown,
 /turf/closed/wall/mineral/rogue/wood/window,
 /area/rogue/outdoors/bograt/above)
 "xvV" = (
@@ -75394,6 +75419,10 @@
 /area/rogue/indoors/town/magician{
 	name = "Mage's Tower"
 	})
+"xyD" = (
+/obj/item/roguecoin/silver/pile,
+/turf/open/floor/rogue/tile,
+/area/rogue/under/town/basement/keep)
 "xyI" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
@@ -192665,7 +192694,7 @@ aeI
 smf
 smf
 qCt
-qCt
+bmn
 qCt
 qCt
 qCt
@@ -205275,7 +205304,7 @@ qrc
 qrc
 uWK
 wfu
-mhV
+wfu
 wfu
 wfu
 uWK
@@ -209161,7 +209190,7 @@ uWK
 uWK
 psr
 psr
-kea
+qOA
 qOA
 qOA
 bWx
@@ -212179,7 +212208,7 @@ wLx
 qrc
 gDP
 qrc
-hDr
+qrc
 qrc
 wfu
 wfu
@@ -214342,7 +214371,7 @@ qrc
 wfu
 uWK
 wLx
-hDr
+qrc
 qrc
 qvA
 qrc
@@ -225157,7 +225186,7 @@ amU
 wLx
 wLx
 wLx
-gDP
+uWK
 wLx
 aad
 fyc
@@ -229474,7 +229503,7 @@ wLx
 afm
 qvA
 uWK
-uTe
+uWK
 uWK
 uWK
 aad
@@ -233788,7 +233817,7 @@ wfu
 uWK
 qrc
 uWK
-uTe
+uWK
 qrc
 wfu
 qrc
@@ -233797,7 +233826,7 @@ uWK
 xQW
 qrc
 uWK
-gDP
+uWK
 aad
 aad
 fyc
@@ -236821,7 +236850,7 @@ qrc
 wLx
 wfu
 wfu
-gDP
+uWK
 qrc
 aad
 fyc
@@ -246519,8 +246548,8 @@ tMe
 hHC
 msr
 qdK
-sjR
 qdK
+sjR
 msr
 hHC
 hHC
@@ -253303,7 +253332,7 @@ yeM
 cGw
 rpo
 opv
-rpo
+kjp
 opv
 rpo
 tmw
@@ -253733,7 +253762,7 @@ dLQ
 lOc
 nhC
 lHK
-rpo
+xyD
 opv
 rpo
 opv
@@ -254166,7 +254195,7 @@ lOc
 aaI
 icc
 rpo
-opv
+qHM
 ueb
 opv
 rpo
@@ -356679,7 +356708,7 @@ hAb
 iLl
 uVv
 eKF
-qdK
+hEd
 qdK
 msr
 wMB
@@ -381793,7 +381822,7 @@ rrT
 lkU
 cjH
 cjH
-bQM
+lkU
 cjH
 cjH
 auv
@@ -382668,7 +382697,7 @@ cjH
 lkU
 cjH
 lkU
-xCs
+lkU
 cjH
 lkU
 cjH
@@ -383969,7 +383998,7 @@ oqx
 oqx
 cjH
 bQM
-bQM
+lkU
 bwS
 ccf
 cyr
@@ -384385,7 +384414,7 @@ lkU
 cjH
 lkU
 lkU
-bQM
+lkU
 auv
 cjH
 bQM
@@ -384394,7 +384423,7 @@ auv
 lkU
 cjH
 lkU
-cjH
+auv
 cjH
 oqx
 oqx
@@ -384826,7 +384855,7 @@ bQM
 auv
 cjH
 lkU
-bQM
+lkU
 lkU
 oqx
 cjH
@@ -385259,10 +385288,10 @@ lkU
 cjH
 cjH
 lkU
-iRu
+cjH
 oqx
 cjH
-auv
+cjH
 cjH
 cjH
 iDD
@@ -385690,7 +385719,7 @@ cjH
 lkU
 lkU
 lkU
-lkU
+bQM
 cjH
 oqx
 cjH
@@ -386121,9 +386150,9 @@ lkU
 cjH
 cjH
 auv
-auv
 cjH
-bQM
+cjH
+lkU
 oqx
 cjH
 cjH
@@ -387421,8 +387450,8 @@ cjH
 auv
 lkU
 lkU
-xCs
-xCs
+lkU
+lkU
 lkU
 cjH
 nqU
@@ -387835,7 +387864,7 @@ cjH
 lkU
 cjH
 cjH
-iRu
+cjH
 cjH
 cjH
 bQM
@@ -387850,7 +387879,7 @@ cjH
 cjH
 cjH
 lkU
-auv
+cjH
 auv
 lkU
 cjH
@@ -388286,8 +388315,8 @@ nmg
 nmg
 nmg
 cjH
-auv
-lkU
+cjH
+bQM
 lkU
 lkU
 mlY
@@ -584189,7 +584218,7 @@ okZ
 ksX
 ksN
 nBW
-bmn
+nBW
 nBW
 wtF
 uda
@@ -613257,7 +613286,7 @@ vpR
 jYx
 oaG
 kMH
-qaq
+xtX
 eba
 dye
 hPw
