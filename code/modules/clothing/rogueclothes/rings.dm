@@ -19,6 +19,7 @@
 	name = "silver ring"
 	icon_state = "ring_s"
 	sellprice = 33
+	is_silver = TRUE
 
 /obj/item/clothing/ring/aalloy
 	name = "decrepit ring"
@@ -153,6 +154,7 @@
 	icon_state = "signet_silver"
 	desc = "A ring of blessed silver, bearing the Archbishop's symbol. By dipping it in melted redtallow, it can seal writs of religious importance."
 	sellprice = 90
+	is_silver = TRUE
 
 /obj/item/clothing/ring/signet/attack_right(mob/user)
 	. = ..()
@@ -256,6 +258,7 @@
 	desc = "A simple silver wedding band complete with an ornate design of a lover's name."
 	icon_state = "s_ring_wedding"
 	sellprice = 3	//You don't get to smelt this down or sell it. No free mams for a loadout item.
+	is_silver = TRUE
 	var/choicename = FALSE
 	var/choicedesc = FALSE
 
@@ -283,37 +286,37 @@
 /obj/item/clothing/ring/emeraldbs
 	name = "gemerald ring"
 	icon_state = "bs_ring_emerald"
-	desc = "A beautiful golden ring with a polished Gemerald set into it."
+	desc = "A beautiful blacksteel ring with a polished Gemerald set into it."
 	sellprice = 295
 
 /obj/item/clothing/ring/rubybs
 	name = "rontz ring"
 	icon_state = "bs_ring_ruby"
-	desc = "A beautiful golden ring with a polished Rontz set into it."
+	desc = "A beautiful blacksteel ring with a polished Rontz set into it."
 	sellprice = 355
 
 /obj/item/clothing/ring/topazbs
 	name = "toper ring"
 	icon_state = "bs_ring_topaz"
-	desc = "A beautiful golden ring with a polished Toper set into it."
+	desc = "A beautiful blacksteel ring with a polished Toper set into it."
 	sellprice = 380
 
 /obj/item/clothing/ring/quartzbs
 	name = "blortz ring"
 	icon_state = "bs_ring_quartz"
-	desc = "A beautiful golden ring with a polished Blortz set into it."
+	desc = "A beautiful blacksteel ring with a polished Blortz set into it."
 	sellprice = 345
 
 /obj/item/clothing/ring/sapphirebs
 	name = "saffira ring"
 	icon_state = "bs_ring_sapphire"
-	desc = "A beautiful golden ring with a polished Saffira set into it."
+	desc = "A beautiful blacksteel ring with a polished Saffira set into it."
 	sellprice = 300
 
 /obj/item/clothing/ring/diamondbs
 	name = "dorpel ring"
 	icon_state = "bs_ring_diamond"
-	desc = "A beautiful golden ring with a polished Dorpel set into it."
+	desc = "A beautiful blacksteel ring with a polished Dorpel set into it."
 	sellprice = 370
 /////////////////////////
 // Stat-Boosting Rings //
