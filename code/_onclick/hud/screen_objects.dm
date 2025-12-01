@@ -2038,6 +2038,27 @@
 
 	animate(fill, time = duration)
 
+/atom/movable/screen/bloodpool/Click(location,control,params)
+	var/list/modifiers = params2list(params)
+	if(modifiers["left"] && modifiers["shift"])
+		examine_ui(usr)
+		return FALSE
+	if(!modifiers["left"])
+		return
+	if(usr.next_click > world.time)
+		return
+	usr.next_click = world.time + 1
+	if(!ismob(usr))
+		return
+	// If the fill color is the devotion-blue, trigger the cleric prayer verb.
+	var/col = fill.color
+	if(col == "#3C41A4" || col == "#3c41a4")
+		if(istype(usr, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = usr
+			H.clericpray()
+		return TRUE
+	return
+
 /atom/movable/screen/bloodpool_maskpart
 	layer = FLOAT_LAYER
 	plane = FLOAT_PLANE
@@ -2048,6 +2069,11 @@
 	. = ..()
 	src.icon = icon
 	src.parent_screen = parent_screen
+
+/atom/movable/screen/bloodpool_maskpart/Click(location, control, params)
+	if(parent_screen)
+		return parent_screen.Click(location, control, params)
+	return FALSE
 
 /atom/movable/screen/bloodpool_maskpart/examine_ui(mob/user)
 	return parent_screen?.examine_ui(user)
