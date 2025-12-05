@@ -52,9 +52,9 @@
 // Traveling Scholar Pack: Linguist + Rich and Shrewd + Equestrian
 // For worldly scholars who have traveled extensively and accumulated wealth and knowledge
 /datum/virtue/pack/travelingscholar
-	name = "Traveling Scholar (-8 TRI)"
+	name = "Traveling Scholar (-6	 TRI)"
 	desc = "My travels across distant lands have made me wealthy in both coin and wisdom. I speak many tongues, understand the value of all things, and ride with practiced ease. The world is my library, and every road teaches me something new."
-	triumph_cost = 8
+	triumph_cost = 6
 	granted_virtues = list(
 		/datum/virtue/utility/linguist,
 		/datum/virtue/items/rich,
@@ -71,12 +71,10 @@
 	desc = "I've lived through hard times - poverty, famine, or exile taught me to make do with what I have. I can fish, farm, forage, and most importantly, I can stomach anything. Spoiled rations? Raw meat? Doesn't matter - I'll eat it and keep going."
 	triumph_cost = 6
 	granted_virtues = list(
-		/datum/virtue/utility/granary,
 		/datum/virtue/utility/forester,
 		/datum/virtue/utility/feral_appetite
 	)
-	custom_text = "Grants three virtues for the hardened survivor:\n\
-	- Cunning Provisioner: Cooking & Fishing skills, food bag stashed (HOMESTEAD_EXPERT)\n\
+	custom_text = "Grants two virtues for the hardened survivor:\n\
 	- Forester: Cooking, Athletics, Farming, Fishing, Lumberjacking skills, Trusty Hoe (HOMESTEAD_EXPERT trait)\n\
 	- Feral Appetite: Can safely eat raw, toxic or spoiled food (NASTY_EATER trait)"
 
@@ -95,9 +93,9 @@
 
 // Trusted Housekeeper Pack: Resident + Cunning Provisioner
 /datum/virtue/pack/housekeeper
-	name = "Trusted Housekeeper (-3 TRI)"
+	name = "Trusted Housekeeper (-6 TRI)"
 	desc = "I've served the households of this city for years - cooking, cleaning, and managing provisions. I know every street, have a home here, and my skills in the kitchen are unmatched. The city trusts me, and I know how to make do."
-	triumph_cost = 3
+	triumph_cost = 6
 	granted_virtues = list(
 		/datum/virtue/utility/resident,
 		/datum/virtue/utility/granary

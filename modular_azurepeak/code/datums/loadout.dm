@@ -1044,16 +1044,6 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	path = /obj/item/rogueweapon/sword/long/rhomphaia/copper
 	triumph_cost = 4
 
-/datum/loadout_item/tri_whip
-	name = "Whip"
-	path = /obj/item/rogueweapon/whip
-	triumph_cost = 4
-
-/datum/loadout_item/tri_messer_iron
-	name = "Iron Hunting Sword"
-	path = /obj/item/rogueweapon/sword/short/messer/iron
-	triumph_cost = 6
-
 /datum/loadout_item/tri_huntingknife_iron
 	name = "Iron Hunting Knife"
 	path = /obj/item/rogueweapon/huntingknife
