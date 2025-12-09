@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(ticket_ping)
 /datum/controller/subsystem/ticket_ping/fire(resumed)
 	var/valid_ahelps
 	for(var/datum/admin_help/ahelp in GLOB.ahelp_tickets.active_tickets)
-		if(ahelp.last_admin_interaction && ahelp.last_admin_interaction + wait < world.time)
+		if(ahelp.last_admin_interaction && ahelp.last_admin_interaction + wait < world.time && ahelp.last_admin_interaction >= ahelp.last_interaction)
 			continue
 		valid_ahelps++
 
