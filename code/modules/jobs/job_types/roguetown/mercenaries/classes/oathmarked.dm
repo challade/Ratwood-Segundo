@@ -192,6 +192,7 @@
 	item_state = "bplatehelm_nv"
 	block2add = FOV_BEHIND
 	body_parts_covered = HEAD|HAIR|EARS
+	flags_inv = HIDEEARS|HIDEHAIR
 	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON + 50//350. 50 less than a standard steel helm.
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
