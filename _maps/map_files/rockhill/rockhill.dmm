@@ -2257,6 +2257,7 @@
 	dir = 5;
 	icon_state = "largetable"
 	},
+/obj/item/reagent_containers/glass/bowl,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/warden)
 "aJQ" = (
@@ -5773,16 +5774,12 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/rtfield/rockhill/above)
 "bPO" = (
-/obj/structure/table/wood{
-	dir = 4;
-	icon_state = "largetable"
-	},
 /obj/structure/mineral_door/wood/donjon/stone{
 	locked = 1;
 	lockid = "church";
 	name = "Private Meeting Area"
 	},
-/turf/open/floor/carpet/royalblack,
+/turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town/church)
 "bQd" = (
 /obj/structure/stairs/stone{
@@ -12719,7 +12716,6 @@
 /area/rogue/under/town/basement/keep)
 "dRU" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
-/obj/structure/closet/crate/roguecloset/inn/chest,
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed,
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison,
 /obj/item/rogueweapon/hoe,
@@ -12731,6 +12727,13 @@
 /obj/item/reagent_containers/glass/bottle/alchemical,
 /obj/item/reagent_containers/glass/bottle/alchemical,
 /obj/item/reagent_containers/glass/bottle/alchemical,
+/obj/structure/closet/crate/chest/old_crate,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
+/obj/effect/spawner/lootdrop/potion_ingredient/herb,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/physician)
 "dSg" = (
@@ -24323,9 +24326,6 @@
 "hpj" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
-"hpl" = (
-/turf/closed,
-/area/rogue/outdoors/woodsrat/south)
 "hpn" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/rock,
 /turf/open/floor/rogue/cobble/mossy,
@@ -58750,14 +58750,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
-/obj/machinery/gear_painter{
-	pixel_x = -11;
-	pixel_y = 7
-	},
-/obj/item/roguebin/water/gross{
-	pixel_x = 11;
-	pixel_y = 7
-	},
+/obj/machinery/gear_painter,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/rtfield/rockhill)
 "sfX" = (
@@ -69674,14 +69667,6 @@
 	},
 /turf/open/water/bath,
 /area/rogue/indoors/town/bath)
-"vEh" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "largetable"
-	},
-/obj/item/reagent_containers/glass/bowl,
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors/town/warden)
 "vEj" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/church,
@@ -70705,11 +70690,6 @@
 /obj/structure/fluff/railing/border{
 	dir = 4
 	},
-/obj/effect/spawner/lootdrop/potion_ingredient/herb,
-/obj/effect/spawner/lootdrop/potion_ingredient/herb,
-/obj/effect/spawner/lootdrop/potion_ingredient/herb,
-/obj/effect/spawner/lootdrop/potion_ingredient/herb,
-/obj/effect/spawner/lootdrop/potion_ingredient/herb,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/physician)
 "vVN" = (
@@ -247262,7 +247242,7 @@ vRu
 vRu
 vRu
 vSw
-vEh
+lnn
 wqH
 mdN
 hHC
@@ -247279,7 +247259,7 @@ efu
 efu
 efu
 efu
-uaL
+lBw
 qvR
 qvR
 fxx
@@ -254646,7 +254626,7 @@ xrY
 qvR
 wSn
 uaL
-awN
+qvR
 uaL
 xvN
 qvR
@@ -255074,7 +255054,7 @@ wsY
 bzm
 bzm
 pOX
-wSn
+kPB
 ryI
 wOD
 wkp
@@ -394929,7 +394909,7 @@ ffv
 ffv
 dBG
 kCN
-isU
+bPO
 pHA
 pHA
 upd
@@ -397090,7 +397070,7 @@ isU
 gRy
 fwp
 bJQ
-bPO
+fwp
 wYf
 isU
 isU
@@ -504441,7 +504421,7 @@ mBL
 rKu
 mBL
 mBL
-hpl
+mBL
 mBL
 ldE
 rKu
