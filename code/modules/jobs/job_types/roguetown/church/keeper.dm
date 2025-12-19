@@ -28,6 +28,9 @@
 						  TRAIT_SURVIVAL_EXPERT, TRAIT_NOSTINK,
 						  TRAIT_STEELHEARTED)
 
+	//You're part of a Pestran sect. Not nobility.
+	virtue_restrictions = list(/datum/virtue/utility/noble)
+
 	advclass_cat_rolls = list(CTAG_KEEPER = 2)
 	job_subclasses = list(
 		/datum/advclass/keeper
