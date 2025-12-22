@@ -176,6 +176,8 @@
 
 // --------- IRON -----------
 
+
+
 /datum/anvil_recipe/tools/iron/blowrod
 	name = "Glass Blowing Rod"
 	req_bar = /obj/item/ingot/iron
@@ -310,6 +312,12 @@
 	created_item = /obj/item/storage/hip/headhook
 	i_type = "Tools"
 
+/datum/anvil_recipe/tools/scissors
+	name = "Scissors"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rogueweapon/huntingknife/scissors
+	i_type = "Tools"
+
 // --------- Steel -----------
 
 /datum/anvil_recipe/tools/steel/hammer
@@ -342,6 +350,12 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/huntingknife/cleaver
 	createditem_num = 1
+
+/datum/anvil_recipe/tools/steelscissors
+	name = "Scissors"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/huntingknife/scissors/steel
+	i_type = "Tools"
 
 // --------- SILVER -----------
 
