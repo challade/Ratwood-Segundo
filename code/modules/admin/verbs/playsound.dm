@@ -61,9 +61,9 @@
 		prefs.musicvol = vol
 		prefs.save_preferences()
 
-		mob.update_music_volume(CHANNEL_MUSIC, prefs.musicvol)
-		mob.update_music_volume(CHANNEL_LOBBYMUSIC, prefs.musicvol)
 		mob.update_music_volume(CHANNEL_ADMIN, prefs.musicvol)
+		mob.update_music_volume(CHANNEL_BUZZ, prefs.musicvol)
+		mob.update_music_volume(CHANNEL_CMUSIC, prefs.musicvol)
 
 
 /client/verb/show_rolls()
@@ -105,6 +105,24 @@
 		prefs.save_preferences()
 
 		mob.update_channel_volume(CHANNEL_AMBIENCE, prefs.ambiencevol)
+		mob.update_channel_volume(CHANNEL_MUSIC, prefs.ambiencevol)
+		mob.update_channel_volume(CHANNEL_RAIN, prefs.ambiencevol)
+
+/client/verb/change_lobby_music_vol()
+	set category = "Options"
+	set name = "ChangeLobbyMusicPower"
+
+	if(prefs)
+		var/vol = input(usr, "Current lobby music power: [prefs.lobbymusicvol]",, 100) as null|num
+		if(!vol)
+			if(vol != 0)
+				return
+		vol = min(vol, 100)
+		prefs.lobbymusicvol = vol
+		prefs.save_preferences()
+
+		if(isnewplayer(mob))
+			mob.update_music_volume(CHANNEL_LOBBYMUSIC, prefs.lobbymusicvol)
 /*
 /client/verb/help_rpguide()
 	set category = "Options"
