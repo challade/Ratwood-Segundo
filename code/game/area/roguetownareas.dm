@@ -101,6 +101,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound = 'sound/music/area/underworlddrone.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
+	first_time_text = "DEATHS PRECIPICE"
 
 /area/rogue/indoors/eventarea
 	name = "Event Area"
