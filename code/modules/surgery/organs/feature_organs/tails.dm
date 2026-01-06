@@ -78,7 +78,3 @@
 	desc = ""
 	color = "#116611"
 	accessory_type =  /datum/sprite_accessory/tail/lizard/kobold
-
-/obj/item/organ/tail/harpy
-	name = "harpy plumage"
-	desc = "Why?"

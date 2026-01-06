@@ -58,8 +58,7 @@ Balloon Alert / Floating Text defines
 	/datum/species/goblinp,\
 	/datum/species/dullahan,\
 	/datum/species/lamia,\
-	/datum/species/dwarf/gnome,\
-	/datum/species/harpy\
+	/datum/species/dwarf/gnome\
 )
 
 #define RACES_RESPECTED \
@@ -130,7 +129,6 @@ Balloon Alert / Floating Text defines
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/lamia,\
-	/datum/species/harpy,\
 )
 
 #define CLOTHED_RACES_TYPES list(\

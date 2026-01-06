@@ -4,7 +4,7 @@ $include game_options.txt
 $include dbconfig.txt
 $include comms.txt
 $include antag_rep.txt
-$include discord.txt
+$include resources.txt
 
 # You can use the @ character at the beginning of a config option to lock it from being edited in-game
 # Example usage:
@@ -15,16 +15,16 @@ $include discord.txt
 # There are various options which are hard-locked for security reasons.
 
 ## Server name: This appears at the top of the screen in-game and in the BYOND hub. Uncomment and replace 'tgstation' with the name of your choice.
-SERVERNAME CausticCove
+SERVERNAME AZURE PEAK
 
 ## Server tagline: This will appear right below the server's title.
-# SERVERTAGLINE A generic TG-based server
+# SERVERTAGLINE 18+ HRP Fantasy Server.
 
 ## Server SQL name: This is the name used to identify the server to the SQL DB, distinct from SERVERNAME as it must be at most 32 characters.
 # SERVERSQLNAME tgstation
 
 ## Station name: The name of the station as it is referred to in-game. If commented out, the game will generate a random name instead.
-STATIONNAME Jaggedjaw Vale
+STATIONNAME AZURE PEAK
 
 ## Put on byond hub: Uncomment this to put your server on the byond hub.
 #HUB
@@ -38,7 +38,7 @@ ROUND_END_COUNTDOWN 180
 ## Comment this out if you want to use the SQL based admin system, the legacy system uses admins.txt.
 ## You need to set up your database to use the SQL based system.
 ## This flag is automatically enabled if SQL_ENABLED isn't
-#ADMIN_LEGACY_SYSTEM
+ADMIN_LEGACY_SYSTEM
 
 ##Uncomment this to stop any admins loaded by the legacy system from having their rank edited by the permissions panel
 #PROTECT_LEGACY_ADMINS
@@ -82,6 +82,9 @@ ENABLE_LOCALHOST_RANK
 
 ## log OOC channel
 LOG_OOC
+
+## log LOOC channel
+LOG_LOOC
 
 ## log client Say
 LOG_SAY
@@ -239,16 +242,16 @@ USEBLACKLIST
 # SERVER ss13.example.com:2506
 
 ## Discod address
-# DISCORDURL https://discord.gg/bx9c7ha5Qk
+DISCORDURL https://discord.gg/bx9c7ha5Qk
 
 ## Wiki address
-# WIKIURL https://wiki.moviesfreepremium.xyz/blackstone
+WIKIURL https://wiki.moviesfreepremium.xyz/blackstone
 
 ## Rules address
-# RULESURL https://wiki.moviesfreepremium.xyz/blackstone/rules
+RULESURL https://wiki.moviesfreepremium.xyz/blackstone/rules
 
 ## Github address
-GITHUBURL https://github.com/wewman222/CC
+GITHUBURL https://github.com/Blackstone-SS13/BLACKSTONE
 
 ## Round specific stats address
 ## Link to round specific parsed logs; IE statbus. It is appended with the RoundID automatically by ticker/Reboot()
@@ -359,6 +362,13 @@ BYOND_MEMBER_BYPASS_POPCAP
 ## The message the Panic Bunker gives when someone is rejected by it
 #PANIC_BUNKER_MESSAGE Sorry, but the server is currently not accepting connections from never before seen players.
 
+## Alternative to panic bunker. Deny all unwhitelisted players.
+##	Requires database
+#WHITELIST_BUNKER
+
+## The message the Whitelist Bunker gives when someone is rejected due to lack of whitelist
+#WHITELIST_BUNKER_MESSAGE Sorry, but the server is currently not accepting connections from unwhitelisted players.
+
 ## If panic bunker is on and a player is rejected (see above), attempt to send them to this connected server (see below) instead.
 ##	You probably want this to be the same as CROSS_SERVER_ADDRESS
 #PANIC_SERVER_ADDRESS byond://address:port
@@ -380,7 +390,7 @@ ANNOUNCE_ADMIN_LOGOUT
 
 ## Map rotation
 ## You should edit maps.txt to match your configuration when you enable this.
-MAPROTATION
+#MAPROTATION
 
 ## Map voting
 ## Allows players to vote with their preffered map setting
@@ -468,18 +478,6 @@ MINUTE_CLICK_LIMIT 400
 
 #CHANNEL_ANNOUNCE_NEW_GAME_MESSAGE A new round is beggining!!
 
-## Send a message to chat when a ckey is removed or added to the whitelist
-#CHAT_ANNOUNCE_WHITELIST whitelist
-
-## Send a message to the chat when a ckey  is removed or added to verified
-#CHAT_ANNOUNCE_VERIFY verify
-
-## Send a message to the chat when a ckey  is removed or added to donator
-#CHAT_ANNOUNCE_DONATOR donator
-
-## Chat which you are allowed to add / remove ckeys to the whitelist
-#CHAT_COMMAND_WHITELIST whitelist
-
 ## Allow admin hrefs that don't use the new token system, will eventually be removed
 DEBUG_ADMIN_HREFS
 
@@ -521,3 +519,13 @@ DEFAULT_VIEW 15x15
 ## The alternative square viewport size if you're using a widescreen view size
 ## You probably shouldn't ever be changing this, but it's here if you want to.
 DEFAULT_VIEW_SQUARE 15x15
+
+## Uncomment to enable global ban DB using the provided URL. The API should expect to receive a ckey at the end of the URL.
+## More API details can be found here: https://centcom.melonmesa.com
+#CENTCOM_BAN_DB https://centcom.melonmesa.com/ban/search
+
+## If the server only accepts whitelisted connections
+## 0 Disables Border Control
+## 1 Puts Border Control into 'learning mode' and will have it automatically whitelist new connections
+## 2 Puts Border Control into 'enforcing mode' and will have it deny connections that are not already whitelisted.
+BORDER_CONTROL 0

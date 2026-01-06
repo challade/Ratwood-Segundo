@@ -1344,8 +1344,6 @@ SUBSYSTEM_DEF(gamemode)
 				record_round_statistic(STATS_ALIVE_LUPIANS)
 			if(ismoth(human_mob))
 				record_round_statistic(STATS_ALIVE_MOTHS)
-			if(isharpy(human_mob))
-				record_round_statistic(STATS_ALIVE_HARPIES)
 
 			// Chronicle statistics
 			if(human_mob.STASTR > highest_strength)

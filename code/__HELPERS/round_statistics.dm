@@ -21,7 +21,6 @@
 #define STATS_ALIVE_VULPS "alive_vulps"
 #define STATS_ALIVE_LUPIANS "alive_lupians"
 #define STATS_ALIVE_MOTHS "alive_moths"
-#define STATS_ALIVE_HARPIES "alive_harpies"
 
 #define STATS_VAMPIRES "vampires"
 

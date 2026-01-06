@@ -186,7 +186,3 @@
 /obj/item/organ/ears/psy_vault_guard
 	name = "cobra hood"
 	accessory_type = /datum/sprite_accessory/ears/cobrahood
-
-/obj/item/organ/ears/harpy
-	name = "harpy ears"
-	desc = "You are a monster."
