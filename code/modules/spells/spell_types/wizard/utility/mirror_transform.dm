@@ -45,13 +45,59 @@
 	if (!H)
 		return
 	var/should_update = FALSE
-	var/list/choices = list("hairstyle", "facial hairstyle", "accessory", "face detail", "crest", "horns", "horn color", "ears", "ear color one", "ear color two", "tail", "tail color one", "tail color two", "tail feature", "tail feature color", "wings", "wing color one", "wing color two", "frills", "frill color", "antennas", "antenna color", "snout", "snout color", "head feature", "head feature color", "neck feature", "neck feature color", "back feature", "back feature color", "descriptors", "hair color", "facial hair color", "eye color", "skin color", "mutant color", "mutant color 2", "mutant color 3", "natural gradient", "natural gradient color", "dye gradient", "dye gradient color", "penis", "penis color", "testicles", "testicles color", "breasts", "breasts color", "vagina", "breast size", "penis size", "testicle size")
+	var/list/choices = list("reset appearance", "hairstyle", "facial hairstyle", "accessory", "face detail", "crest", "horns", "horn color", "ears", "ear color one", "ear color two", "tail", "tail color one", "tail color two", "tail feature", "tail feature color", "wings", "wing color one", "wing color two", "frills", "frill color", "antennas", "antenna color", "snout", "snout color", "head feature", "head feature color", "neck feature", "neck feature color", "back feature", "back feature color", "descriptors", "hair color", "facial hair color", "eye color", "skin color", "mutant color", "mutant color 2", "mutant color 3", "natural gradient", "natural gradient color", "dye gradient", "dye gradient color", "penis", "penis color", "penis color 2", "testicles", "testicles color", "breasts", "breasts color", "vagina", "vagina color", "breast size", "penis size", "testicle size")
 	var/chosen = input(H, "Change what?", "Appearance") as null|anything in choices
 
 	if(!chosen)
 		return
 
 	switch(chosen)
+		if("reset appearance")
+			if(!H.client || !H.client.prefs)
+				to_chat(H, span_warning("You don't have character preferences saved!"))
+				return
+			
+			// Verify this is the same character by checking if the preference slot's name matches
+			if(H.client.prefs.real_name != H.real_name)
+				to_chat(H, span_warning("You can only reset to the appearance of the character you are currently playing!"))
+				return
+			
+			var/confirm = alert(H, "Reset your appearance to match your character preferences? This will reapply all physical features, colors, and descriptors but won't change your name, skills, or abilities.", "Reset Appearance", "Yes", "No")
+			if(confirm != "Yes")
+				return
+			
+			if(!H.client || !H.client.prefs)
+				return
+			
+			// Double-check after the alert (in case player switched slots)
+			if(H.client.prefs.real_name != H.real_name)
+				to_chat(H, span_warning("You can only reset to the appearance of the character you are currently playing!"))
+				return
+			
+			// Store the original name, age, and other non-physical attributes
+			var/original_name = H.real_name
+			var/original_age = H.age
+			
+			// Apply preferences but only physical appearance
+			// We'll manually restore what we don't want changed
+			H.client.prefs.copy_to(H, icon_updates = FALSE, roundstart_checks = FALSE, character_setup = TRUE)
+			
+			// Restore non-physical attributes
+			H.real_name = original_name
+			H.name = original_name
+			H.dna.real_name = original_name
+			if(H.mind)
+				H.mind.name = original_name
+			H.age = original_age
+			
+			// Update visuals
+			H.update_body()
+			H.update_hair()
+			H.update_body_parts(TRUE)
+			
+			to_chat(H, span_notice("Your appearance has been reset to match your character preferences."))
+			should_update = TRUE
+
 		if("hairstyle")
 			var/datum/customizer_choice/bodypart_feature/hair/head/humanoid/hair_choice = CUSTOMIZER_CHOICE(/datum/customizer_choice/bodypart_feature/hair/head/humanoid)
 			var/list/valid_hairstyles = list()
@@ -419,18 +465,44 @@
 						penis = new()
 						penis.Insert(H, TRUE, FALSE)
 					penis.accessory_type = valid_penis_types[new_style]
-					if(!penis.color)
-						penis.color = H.dna.features["mcolor"]
+					// Use build_colors_for_accessory to properly set colors from character
+					penis.build_colors_for_accessory(null)
 					H.update_body()
 					should_update = TRUE
 
 		if("penis color")
 			var/obj/item/organ/penis/penis = H.getorganslot(ORGAN_SLOT_PENIS)
 			if(penis)
-				var/current_color = penis.color || H.dna.features["mcolor"] || "#FFFFFF"
-				var/new_color = color_pick_sanitized(H, "Choose your penis color", "Penis Color", current_color)
+				var/list/current_colors = list()
+				if(penis.accessory_colors)
+					current_colors = color_string_to_list(penis.accessory_colors)
+				if(!length(current_colors))
+					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF", H.dna.features["mcolor"] || "#FFFFFF")
+				var/new_color = color_pick_sanitized(H, "Choose your primary penis color", "Penis Color", current_colors[1])
 				if(new_color)
-					penis.color = sanitize_hexcolor(new_color, 6, TRUE)
+					penis.Remove(H)
+					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
+					penis.accessory_colors = color_list_to_string(current_colors)
+					penis.Insert(H, TRUE, FALSE)
+					H.update_body()
+					should_update = TRUE
+			else
+				to_chat(H, span_warning("You don't have a penis!"))
+
+		if("penis color 2")
+			var/obj/item/organ/penis/penis = H.getorganslot(ORGAN_SLOT_PENIS)
+			if(penis)
+				var/list/current_colors = list()
+				if(penis.accessory_colors)
+					current_colors = color_string_to_list(penis.accessory_colors)
+				if(!length(current_colors))
+					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF", H.dna.features["mcolor"] || "#FFFFFF")
+				var/new_color = color_pick_sanitized(H, "Choose your secondary penis color (sheath/detail)", "Penis Color 2", current_colors[2])
+				if(new_color)
+					penis.Remove(H)
+					current_colors[2] = sanitize_hexcolor(new_color, 6, TRUE)
+					penis.accessory_colors = color_list_to_string(current_colors)
+					penis.Insert(H, TRUE, FALSE)
 					H.update_body()
 					should_update = TRUE
 			else
@@ -457,18 +529,25 @@
 						testicles = new()
 						testicles.Insert(H, TRUE, FALSE)
 					testicles.accessory_type = valid_testicle_types[new_style]
-					if(!testicles.color)
-						testicles.color = H.dna.features["mcolor"]
+					// Use build_colors_for_accessory to properly set colors from character
+					testicles.build_colors_for_accessory(null)
 					H.update_body()
 					should_update = TRUE
 
 		if("testicles color")
 			var/obj/item/organ/testicles/testicles = H.getorganslot(ORGAN_SLOT_TESTICLES)
 			if(testicles)
-				var/current_color = testicles.color || H.dna.features["mcolor"] || "#FFFFFF"
-				var/new_color = color_pick_sanitized(H, "Choose your testicles color", "Testicles Color", current_color)
+				var/list/current_colors = list()
+				if(testicles.accessory_colors)
+					current_colors = color_string_to_list(testicles.accessory_colors)
+				if(!length(current_colors))
+					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF")
+				var/new_color = color_pick_sanitized(H, "Choose your testicles color", "Testicles Color", current_colors[1])
 				if(new_color)
-					testicles.color = sanitize_hexcolor(new_color, 6, TRUE)
+					testicles.Remove(H)
+					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
+					testicles.accessory_colors = color_list_to_string(current_colors)
+					testicles.Insert(H, TRUE, FALSE)
 					H.update_body()
 					should_update = TRUE
 			else
@@ -497,25 +576,36 @@
 						breasts.Insert(H, TRUE, FALSE)
 
 					breasts.accessory_type = valid_breast_types[new_style]
-					if(!breasts.color)
-						breasts.color = H.dna.features["mcolor"]
+					// Use build_colors_for_accessory to properly set colors from character
+					breasts.build_colors_for_accessory(null)
 					H.update_body()
 					should_update = TRUE
 
 		if("breasts color")
 			var/obj/item/organ/breasts/breasts = H.getorganslot(ORGAN_SLOT_BREASTS)
 			if(breasts)
-				var/current_color = breasts.color || H.dna.features["mcolor"] || "#FFFFFF"
-				var/new_color = color_pick_sanitized(H, "Choose your breasts color", "Breasts Color", current_color)
+				var/list/current_colors = list()
+				if(breasts.accessory_colors)
+					current_colors = color_string_to_list(breasts.accessory_colors)
+				if(!length(current_colors))
+					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF")
+				var/new_color = color_pick_sanitized(H, "Choose your breasts color", "Breasts Color", current_colors[1])
 				if(new_color)
-					breasts.color = sanitize_hexcolor(new_color, 6, TRUE)
+					breasts.Remove(H)
+					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
+					breasts.accessory_colors = color_list_to_string(current_colors)
+					breasts.Insert(H, TRUE, FALSE)
 					H.update_body()
 					should_update = TRUE
 			else
 				to_chat(H, span_warning("You don't have breasts!"))
 
 		if("vagina")
-			var/list/valid_vagina_types = list("none", "human", "hairy", "spade", "furred", "gaping", "cloaca")
+			var/list/valid_vagina_types = list("none")
+			for(var/vagina_path in subtypesof(/datum/sprite_accessory/vagina))
+				var/datum/sprite_accessory/vagina/vagina = new vagina_path()
+				valid_vagina_types[vagina.name] = vagina_path
+
 			var/new_style = input(H, "Choose your vagina type", "Vagina Customization") as null|anything in valid_vagina_types
 
 			if(new_style)
@@ -532,15 +622,29 @@
 						vagina = new()
 						vagina.Insert(H, TRUE, FALSE)
 					vagina.accessory_type = valid_vagina_types[new_style]
-
-					var/new_color = color_pick_sanitized(H, "Choose your vagina color", "Vagina Color", vagina.color || H.dna.features["mcolor"])
-					if(new_color)
-						vagina.color = sanitize_hexcolor(new_color, 6, TRUE)
-					else
-						vagina.color = H.dna.features["mcolor"]
-
+					// Use build_colors_for_accessory to properly set colors from character
+					vagina.build_colors_for_accessory(null)
 					H.update_body()
 					should_update = TRUE
+
+		if("vagina color")
+			var/obj/item/organ/vagina/vagina = H.getorganslot(ORGAN_SLOT_VAGINA)
+			if(vagina)
+				var/list/current_colors = list()
+				if(vagina.accessory_colors)
+					current_colors = color_string_to_list(vagina.accessory_colors)
+				if(!length(current_colors))
+					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF")
+				var/new_color = color_pick_sanitized(H, "Choose your vagina color", "Vagina Color", current_colors[1])
+				if(new_color)
+					vagina.Remove(H)
+					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
+					vagina.accessory_colors = color_list_to_string(current_colors)
+					vagina.Insert(H, TRUE, FALSE)
+					H.update_body()
+					should_update = TRUE
+			else
+				to_chat(H, span_warning("You don't have a vagina!"))
 
 		if("breast size")
 			var/list/breast_sizes = list("Flat", "Slight", "Small", "Moderate", "Large", "Generous", "Heavy", "Massive", "Heaping", "Obscene")
