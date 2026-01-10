@@ -131,7 +131,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/survival/bag
-	name = "bag"
+	name = "sack"
 	result = /obj/item/storage/roguebag/crafted
 	reqs = list(
 		/obj/item/natural/fibers = 1,
@@ -482,3 +482,15 @@
 		)
 	skillcraft = /datum/skill/misc/medicine
 	craftdiff = 4
+
+/datum/crafting_recipe/roguetown/survival/bandage
+	name = "bandages (medicine)"
+	result = list(
+		/obj/item/natural/cloth/bandage
+	)
+	reqs = list(
+		/obj/item/natural/cloth = 1,
+		/obj/item/natural/silk = 1,
+		/obj/item/ash = 1)
+	skillcraft = /datum/skill/misc/medicine
+	craftdiff = 2

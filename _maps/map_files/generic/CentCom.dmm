@@ -788,6 +788,13 @@
 	droning_sound_night = 'sound/music/impish.ogg';
 	droning_sound = 'sound/music/impish.ogg'
 	})
+"cn" = (
+/obj/structure/flora/roguegrass,
+/turf/open/floor/rogue/snowrough,
+/area/rogue/outdoors/woods{
+	first_time_text = "Murder Pass";
+	name = "Bandit Woods"
+	})
 "ct" = (
 /obj/structure/zizo_bane,
 /turf/open/water/river{
@@ -853,6 +860,12 @@
 	droning_sound_night = 'sound/music/impish.ogg';
 	droning_sound = 'sound/music/impish.ogg'
 	})
+"cN" = (
+/obj/structure/fluff/railing/border{
+	dir = 6
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "cP" = (
 /turf/open/floor/rogue/twig/platform,
 /area/rogue/outdoors/bog{
@@ -1565,11 +1578,8 @@
 	ambush_mobs = null
 	})
 "gc" = (
-/obj/structure/roguemachine/mail/r{
-	mailtag = "Freemen";
-	obfuscated = 1
-	},
-/turf/open/floor/rogue/herringbone,
+/obj/machinery/light/rogue/wallfire/candle/r,
+/turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/banditcamp)
 "gd" = (
 /turf/closed/wall/mineral/rogue/tent,
@@ -1868,12 +1878,11 @@
 	},
 /area/rogue/indoors/banditcamp)
 "hx" = (
-/obj/effect/landmark/mapGenerator/rogue/forest{
-	endTurfX = 128;
-	endTurfY = 128
+/obj/structure/fluff/railing/border{
+	dir = 8
 	},
-/turf/closed,
-/area/rogue)
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "hB" = (
 /obj/effect/wisp/prestidigitation{
 	color = "#ff0d00";
@@ -2732,7 +2741,7 @@
 /obj/item/roguecoin/gold/pile,
 /obj/item/candle/candlestick/gold/lit,
 /turf/open/water/cleanshallow,
-/area/rogue/indoors/banditcamp)
+/area/rogue/indoors/banditcamp/hoardmaster)
 "lA" = (
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/vampire_manor)
@@ -2889,6 +2898,19 @@
 "mt" = (
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/eventarea)
+"mu" = (
+/obj/structure/table/wood{
+	dir = 10;
+	icon_state = "largetable"
+	},
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/banditcamp)
 "mw" = (
 /turf/open/floor/rogue/metal,
 /area/rogue/indoors/eventarea)
@@ -3765,6 +3787,12 @@
 	droning_sound_night = 'sound/music/impish.ogg';
 	droning_sound = 'sound/music/impish.ogg'
 	})
+"qG" = (
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "qH" = (
 /obj/structure/stairs{
 	dir = 1
@@ -4275,7 +4303,7 @@
 	name = "Wall of Greed"
 	},
 /turf/open/floor/rogue/blocks,
-/area/rogue/indoors/banditcamp)
+/area/rogue/indoors/banditcamp/hoardmaster)
 "tt" = (
 /turf/closed/wall/mineral/rogue/tent{
 	dir = 8
@@ -4415,6 +4443,12 @@
 	droning_sound_night = 'sound/music/impish.ogg';
 	droning_sound = 'sound/music/impish.ogg'
 	})
+"ux" = (
+/obj/structure/fluff/railing/border{
+	dir = 10
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors)
 "uz" = (
 /turf/open/water/river{
 	dir = 4;
@@ -5238,7 +5272,7 @@
 "yp" = (
 /obj/item/roguecoin/gold/pile,
 /turf/open/water/cleanshallow,
-/area/rogue/indoors/banditcamp)
+/area/rogue/indoors/banditcamp/hoardmaster)
 "yq" = (
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/grass,
@@ -5666,6 +5700,13 @@
 	ambientnight = list('sound/ambience/bognight.ogg');
 	ambientsounds = list('sound/ambience/bogday (1).ogg','sound/ambience/bogday (2).ogg','sound/ambience/bogday (3).ogg')
 	})
+"AB" = (
+/obj/structure/flora/roguegrass/bush,
+/turf/open/floor/rogue/snowpatchy,
+/area/rogue/outdoors/woods{
+	first_time_text = "Murder Pass";
+	name = "Bandit Woods"
+	})
 "AC" = (
 /obj/structure/bookcase/random{
 	pixel_y = 8
@@ -6070,9 +6111,15 @@
 	droning_sound = 'sound/music/impish.ogg'
 	})
 "Cn" = (
-/obj/structure/flora/roguetree/pine,
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/banditcamp)
+/obj/structure/roguemachine/mail/r{
+	mailtag = "Freemen"
+	},
+/obj/structure/table/wood{
+	dir = 9;
+	icon_state = "largetable"
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/banditcamp)
 "Cq" = (
 /obj/item/natural/bone,
 /obj/item/natural/bone,
@@ -6174,7 +6221,7 @@
 /obj/item/roguecoin/gold/pile,
 /obj/item/roguegem/green,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/indoors/banditcamp)
+/area/rogue/indoors/banditcamp/hoardmaster)
 "CO" = (
 /obj/structure/table/wood/poor,
 /obj/item/reagent_containers/glass/cup/skull,
@@ -7022,7 +7069,7 @@
 "Gk" = (
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/indoors/banditcamp)
+/area/rogue/indoors/banditcamp/hoardmaster)
 "Gl" = (
 /turf/open/floor/rogue/metal/barograte/open,
 /area/rogue/indoors/eventarea)
@@ -7139,6 +7186,14 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/banditcamp)
+"Hd" = (
+/obj/item/natural/feather,
+/obj/structure/fluff/railing/border{
+	dir = 5
+	},
+/obj/structure/table/wood/long_table,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors)
 "He" = (
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/eventarea)
@@ -7610,7 +7665,7 @@
 	name = "Wall of Greed"
 	},
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/indoors/banditcamp)
+/area/rogue/indoors/banditcamp/hoardmaster)
 "Jx" = (
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/eventarea)
@@ -8311,7 +8366,7 @@
 /obj/item/reagent_containers/glass/bowl/gold,
 /obj/item/roguecoin/gold/pile,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/indoors/banditcamp)
+/area/rogue/indoors/banditcamp/hoardmaster)
 "MA" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/flashlight/flare/torch/metal,
@@ -8336,7 +8391,7 @@
 "MH" = (
 /obj/item/roguecoin/gold/pile,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/indoors/banditcamp)
+/area/rogue/indoors/banditcamp/hoardmaster)
 "MI" = (
 /obj/structure/flora/roguegrass/thorn_bush,
 /turf/open/floor/rogue/dirt,
@@ -8354,7 +8409,7 @@
 	name = "Wall of Greed"
 	},
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/indoors/banditcamp)
+/area/rogue/indoors/banditcamp/hoardmaster)
 "MM" = (
 /obj/structure/fluff/railing/corner,
 /obj/structure/flora/roguetree,
@@ -8909,7 +8964,7 @@
 /obj/item/roguecoin/gold/pile,
 /obj/item/roguestatue/gold,
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/indoors/banditcamp)
+/area/rogue/indoors/banditcamp/hoardmaster)
 "Px" = (
 /obj/structure/flora/roguetree/burnt,
 /turf/open/floor/rogue/dirt,
@@ -9178,7 +9233,7 @@
 /obj/item/rogueweapon/sword/decorated,
 /obj/item/roguecoin/gold/pile,
 /turf/open/water/cleanshallow,
-/area/rogue/indoors/banditcamp)
+/area/rogue/indoors/banditcamp/hoardmaster)
 "QJ" = (
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/twig,
@@ -9348,7 +9403,7 @@
 /obj/item/ingot/gold,
 /obj/item/roguecoin/gold/pile,
 /turf/open/water/cleanshallow,
-/area/rogue/indoors/banditcamp)
+/area/rogue/indoors/banditcamp/hoardmaster)
 "RA" = (
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/river{
@@ -9519,6 +9574,13 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/vampire_manor)
+"SH" = (
+/obj/structure/table/wood/long_table/mid/alt,
+/obj/structure/roguemachine/mail{
+	mailtag = "Kingsfield"
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors)
 "SK" = (
 /obj/structure/chair/bench/couchablack/r,
 /turf/open/floor/rogue/cobblerock,
@@ -10191,6 +10253,10 @@
 "Wf" = (
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/banditcamp)
+"Wg" = (
+/obj/structure/fluff/railing/border,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "Wi" = (
 /obj/structure/minecart_rail{
 	dir = 10
@@ -10227,7 +10293,7 @@
 	name = "Wall of Greed"
 	},
 /turf/open/floor/rogue/blocks,
-/area/rogue/indoors/banditcamp)
+/area/rogue/indoors/banditcamp/hoardmaster)
 "Wr" = (
 /turf/open/floor/rogue/tile/bath,
 /area/rogue/indoors/eventarea)
@@ -10620,6 +10686,9 @@
 	ambientnight = list('sound/ambience/bognight.ogg');
 	ambientsounds = list('sound/ambience/bogday (1).ogg','sound/ambience/bogday (2).ogg','sound/ambience/bogday (3).ogg')
 	})
+"Yk" = (
+/turf/closed/wall/mineral/rogue/decostone/cand,
+/area/rogue/outdoors)
 "Yl" = (
 /obj/structure/fermentation_keg/redwine,
 /turf/open/floor/rogue/grasspurple,
@@ -10637,6 +10706,21 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/banditcamp)
+"Yr" = (
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/structure/fluff/railing/border{
+	dir = 9
+	},
+/obj/structure/table/wood/long_table/right,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors)
 "Ys" = (
 /obj/structure/chair/bench/coucha/r,
 /obj/structure/fluff/wallclock/vampire,
@@ -10822,9 +10906,6 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/vampire_manor)
 "Zj" = (
-/obj/structure/curtain/bounty{
-	color = "grey"
-	},
 /obj/structure/curtain{
 	color = "#ad885c"
 	},
@@ -11030,6 +11111,18 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 bX
 bX
@@ -11078,18 +11171,6 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-hx
 "}
 (2,1,1) = {"
 rQ
@@ -11152,6 +11233,18 @@ vP
 vP
 bX
 rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 bX
 bX
@@ -11171,18 +11264,6 @@ vp
 bX
 bX
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -11282,6 +11363,18 @@ xi
 vP
 bX
 rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 zq
 zq
@@ -11320,18 +11413,6 @@ bX
 bX
 bX
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -11411,6 +11492,18 @@ hQ
 hQ
 vP
 bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 bX
 zq
@@ -11465,18 +11558,6 @@ bX
 bX
 bX
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -11541,6 +11622,18 @@ hQ
 hQ
 vP
 bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 zq
 zq
@@ -11595,18 +11688,6 @@ HY
 bX
 bX
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -11671,6 +11752,18 @@ hQ
 Le
 vP
 bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 zq
 QS
@@ -11725,18 +11818,6 @@ HY
 HY
 HY
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -11801,6 +11882,18 @@ hQ
 hQ
 vP
 bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 zq
 LG
@@ -11855,18 +11948,6 @@ WM
 HY
 HY
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -11931,6 +12012,18 @@ hQ
 IY
 vP
 bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 vp
 Ex
@@ -11963,7 +12056,7 @@ HE
 HE
 HE
 HE
-nk
+cn
 nk
 Qm
 Qm
@@ -11985,18 +12078,6 @@ WM
 WM
 HY
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -12061,6 +12142,18 @@ hQ
 hQ
 vP
 bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 vp
 SU
@@ -12115,18 +12208,6 @@ Hw
 WM
 WM
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -12191,6 +12272,18 @@ hQ
 sz
 vP
 bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 vp
 wH
@@ -12245,18 +12338,6 @@ QY
 WM
 HY
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -12321,6 +12402,18 @@ vP
 vP
 vP
 bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 vp
 oN
@@ -12378,18 +12471,6 @@ bX
 bX
 bX
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 "}
 (12,1,1) = {"
 rQ
@@ -12451,6 +12532,18 @@ kF
 vP
 vP
 bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 zq
 Sl
@@ -12508,18 +12601,6 @@ QY
 QY
 OY
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 "}
 (13,1,1) = {"
 rQ
@@ -12581,6 +12662,18 @@ jH
 vP
 bX
 bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 vp
 XI
@@ -12588,9 +12681,9 @@ Ue
 Hi
 Hi
 EM
-gc
 Hi
-sd
+Hi
+Hi
 vp
 Hi
 Hi
@@ -12638,18 +12731,6 @@ QY
 QY
 OY
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 "}
 (14,1,1) = {"
 rQ
@@ -12711,6 +12792,18 @@ fi
 vP
 bX
 bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 vp
 vp
@@ -12718,9 +12811,9 @@ lT
 yn
 iK
 vp
-vp
-BF
-vp
+Cn
+mu
+gc
 vp
 KT
 Yy
@@ -12768,18 +12861,6 @@ QY
 QY
 OY
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 "}
 (15,1,1) = {"
 rQ
@@ -12841,6 +12922,18 @@ vl
 vP
 bX
 bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 bX
 vp
@@ -12848,12 +12941,12 @@ vp
 vp
 vp
 vp
-Bw
-Bw
-Bw
+vp
+BF
 vp
 vp
 vp
+BF
 vp
 Yp
 vp
@@ -12898,18 +12991,6 @@ bX
 bX
 bX
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 "}
 (16,1,1) = {"
 rQ
@@ -12971,15 +13052,27 @@ LE
 vP
 bX
 bX
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 bX
 bX
 bX
 bX
 nX
-Bw
-Cn
+KJ
+ky
 Bw
 Bw
 Vk
@@ -13025,18 +13118,6 @@ hb
 WM
 HY
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -13101,8 +13182,20 @@ Jp
 vP
 bX
 bX
-bX
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 bX
 bX
@@ -13155,18 +13248,6 @@ WM
 HY
 HY
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -13231,8 +13312,20 @@ jQ
 vP
 bX
 bX
-bX
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 Dv
 JD
@@ -13285,18 +13378,6 @@ HY
 HY
 HE
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -13361,8 +13442,20 @@ Eq
 vP
 bX
 bX
-bX
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 uq
 tl
@@ -13415,18 +13508,6 @@ HE
 HY
 HE
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -13491,8 +13572,20 @@ xO
 vP
 bX
 bX
-bX
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 uq
 Wt
@@ -13545,18 +13638,6 @@ HE
 HE
 HE
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -13621,7 +13702,19 @@ Vl
 vP
 bX
 bX
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 bX
 uq
@@ -13675,18 +13768,6 @@ rY
 rY
 rY
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -13751,7 +13832,19 @@ JJ
 vP
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 Dv
 Dv
@@ -13805,18 +13898,6 @@ Zw
 Zw
 Zw
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -13881,7 +13962,19 @@ pE
 vP
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 uq
 tl
@@ -13938,18 +14031,6 @@ bX
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 "}
 (24,1,1) = {"
 rQ
@@ -13996,9 +14077,9 @@ RH
 RH
 RH
 RH
-RH
-RH
-RH
+cN
+qG
+Hd
 Ph
 Ph
 Vh
@@ -14011,7 +14092,19 @@ vq
 vP
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 uq
 Wt
@@ -14055,9 +14148,9 @@ Qm
 rY
 ip
 rY
-QY
+jD
 HE
-QY
+jD
 rY
 Zw
 Ns
@@ -14065,18 +14158,6 @@ rY
 rY
 rY
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -14126,9 +14207,9 @@ pr
 Do
 Do
 pr
-RH
-RH
-RH
+Wg
+Yk
+SH
 RH
 Ph
 Ub
@@ -14141,7 +14222,19 @@ nQ
 vP
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 Dv
 JD
@@ -14181,7 +14274,7 @@ HQ
 nk
 nk
 HQ
-Qm
+oR
 rY
 ip
 ip
@@ -14195,18 +14288,6 @@ bX
 bX
 bX
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -14256,9 +14337,9 @@ Do
 Do
 Do
 Do
-pr
-RH
-RH
+ux
+hx
+Yr
 Ph
 Ph
 JA
@@ -14271,7 +14352,19 @@ Ut
 vP
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 bX
 bX
@@ -14303,7 +14396,7 @@ Bw
 Bw
 Sm
 PF
-HQ
+mm
 AX
 QY
 mH
@@ -14322,18 +14415,6 @@ Zw
 Zw
 Ns
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -14401,7 +14482,19 @@ vP
 vP
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 zq
 zq
@@ -14442,7 +14535,7 @@ nk
 HQ
 HQ
 Qm
-QY
+jD
 rY
 Zw
 Zw
@@ -14452,18 +14545,6 @@ Zw
 Zw
 Ns
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -14531,7 +14612,19 @@ bX
 bX
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 zq
 Qh
@@ -14563,7 +14656,7 @@ Bw
 MW
 hW
 nk
-HQ
+AB
 QY
 QY
 Xs
@@ -14582,18 +14675,6 @@ rY
 rY
 rY
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -14661,7 +14742,19 @@ bX
 bX
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 zq
 Qh
@@ -14703,27 +14796,15 @@ HE
 nk
 Qm
 Qm
-WM
+hb
 WM
 HY
 WM
-WM
+hb
 rY
 rY
 bX
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -14791,7 +14872,19 @@ bX
 bX
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 zq
 zq
@@ -14841,18 +14934,6 @@ WM
 HY
 bX
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -14921,7 +15002,19 @@ bX
 bX
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 zq
 zq
@@ -14970,18 +15063,6 @@ WM
 HY
 bX
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -15051,7 +15132,19 @@ bX
 bX
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 Cu
 Cu
@@ -15099,18 +15192,6 @@ WM
 HY
 bX
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -15181,7 +15262,19 @@ bX
 bX
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 Cu
 Qh
@@ -15228,18 +15321,6 @@ HQ
 HY
 bX
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -15311,7 +15392,19 @@ bX
 bX
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 zq
 Qh
@@ -15357,18 +15450,6 @@ HE
 HE
 HE
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -15441,7 +15522,19 @@ bX
 bX
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 zq
 Qh
@@ -15487,18 +15580,6 @@ HE
 HE
 HE
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -15571,7 +15652,19 @@ bX
 bX
 bX
 rQ
-bX
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 bX
 zq
 zq
@@ -15603,7 +15696,7 @@ HY
 HY
 HE
 HY
-WM
+hb
 QY
 QY
 fM
@@ -15617,18 +15710,6 @@ HE
 HE
 HE
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -15720,6 +15801,18 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 HE
 HE
 HE
@@ -15729,7 +15822,7 @@ HY
 wa
 WM
 WM
-WM
+hb
 zy
 HM
 QY
@@ -15747,18 +15840,6 @@ HE
 HE
 HE
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -15850,13 +15931,25 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 HE
 pU
 QY
 HM
 QY
 WM
-WM
+hb
 yq
 VP
 WM
@@ -15877,18 +15970,6 @@ HE
 HE
 HE
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -15980,6 +16061,18 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 HE
 pU
 QY
@@ -16007,18 +16100,6 @@ Zu
 WM
 Ru
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -16110,6 +16191,18 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 HE
 pU
 QY
@@ -16137,18 +16230,6 @@ Zu
 QY
 Ru
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -16240,12 +16321,24 @@ rQ
 rQ
 rQ
 rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
+rQ
 HE
 HE
 HE
 HE
 wa
-WM
+hb
 HY
 HY
 HE
@@ -16267,18 +16360,6 @@ HE
 Kk
 HE
 bX
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
 rQ
 rQ
 rQ
@@ -16372,31 +16453,6 @@ rQ
 rQ
 rQ
 rQ
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
-bX
 rQ
 rQ
 rQ
@@ -16409,6 +16465,31 @@ rQ
 rQ
 rQ
 rQ
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
+bX
 rQ
 rQ
 rQ

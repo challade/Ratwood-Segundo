@@ -21,7 +21,7 @@
 	skin_tone_wording = "Brood"
 
 	default_color = "FFFFFF"
-	species_traits = list(EYECOLOR, LIPS, HAIR, FACEHAIR, STUBBLE, LAMIAN_TAIL, OLDGREY)
+	species_traits = list(EYECOLOR, LIPS, HAIR, FACEHAIR, STUBBLE, LAMIAN_TAIL, OLDGREY, MUTCOLORS)
 	use_skintones = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	possible_ages = ALL_AGES_LIST

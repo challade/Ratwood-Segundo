@@ -770,7 +770,16 @@
 		src.apply_status_effect(/datum/status_effect/buff/magearmor)
 		return TRUE
 
+/mob/living/proc/check_scale_armor()
+	return TRUE
 
+/mob/living/carbon/human/check_scale_armor()
+	if(!HAS_TRAIT(src, TRAIT_SCALEARMOR))
+		return FALSE
+	if(src.magearmor == 0)
+		src.magearmor = 1
+		src.apply_status_effect(/datum/status_effect/buff/magearmor)
+		return TRUE
 
 /mob/proc/toggle_eye_intent(mob/user) //clicking the fixeye button either makes you fixeye or clears your target
 	if(fixedeye)

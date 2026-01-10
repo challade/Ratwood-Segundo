@@ -51,7 +51,7 @@
 	owner.add_stress(/datum/stressevent/goodsnack)
 	if(owner.has_status_effect(/datum/status_effect/buff/greatsnackbuff))
 		owner.remove_status_effect(/datum/status_effect/buff/snackbuff)
-	
+
 
 /datum/status_effect/buff/greatsnackbuff
 	id = "greatsnack"
@@ -78,7 +78,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/mealbuff
 	name = "Good meal"
-	desc = "A meal a day keeps the barber away, or at least it makes it slighly easier." 
+	desc = "A meal a day keeps the barber away, or at least it makes it slighly easier."
 	icon_state = "foodbuff"
 
 /datum/status_effect/buff/mealbuff/on_apply()
@@ -431,7 +431,27 @@
 	. = ..()
 	to_chat(owner, span_warning("My magical barrier reforms."))
 	playsound(owner, 'sound/magic/magearmorup.ogg', 75, FALSE)
-	owner.magearmor = 0
+	owner.scalearmor = 0
+
+/atom/movable/screen/alert/status_effect/buff/scalearmor
+	name = "Scale Struck"
+	desc = "My scales were struck. They can't take another strike in place of my armour!"
+	icon_state = "stressvg"
+
+/datum/status_effect/buff/scalearmor
+	id = "scalearmor"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/scalearmor
+
+/datum/status_effect/buff/scalearmor/on_apply()
+	. = ..()
+	playsound(owner, 'sound/combat/sharpness_loss1.ogg', 75, FALSE)
+	duration = 3 MINUTES//A flat rate of 3 minutes, no matter what. Maybe change this to CON?
+
+/datum/status_effect/buff/scalearmor/on_remove()
+	. = ..()
+	to_chat(owner, span_warning("My scales could probably stand another blow."))
+	playsound(owner, 'sound/combat/sharpness_loss2.ogg', 75, FALSE)
+	owner.scalearmor = 0
 
 /atom/movable/screen/alert/status_effect/buff/guardbuffone
 	name = "Vigilant Guardsman"
@@ -1638,3 +1658,12 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff
 	effectedstats = list(STATKEY_SPD = 3, STATKEY_WIL = 1, STATKEY_CON = 1)
 	status_type = STATUS_EFFECT_REPLACE
+
+/datum/status_effect/buff/oath_ring
+	id = "oath_ring_buff"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/oath_ring
+	effectedstats = list(STATKEY_CON = 1, STATKEY_WIL = 1)
+
+/atom/movable/screen/alert/status_effect/buff/oath_ring
+	name = "Oathmarked"
+	desc = "The oath drives me forward, so long as the reminder is kept near."

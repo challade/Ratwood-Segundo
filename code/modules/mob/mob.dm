@@ -481,100 +481,56 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return
 
 	if(isliving(src) && src.m_intent != MOVE_INTENT_SNEAK && src.stat != DEAD)
-		var/message = "[src] looks at"
 		var/target = "\the [A]"
-		var/zone_text = parse_zone(zone_selected)
-		var/mob/living/T = A
+		var/message = "[src] looks at"
 		if(!isturf(A))
 			if(A == src)
 				message = "[src] looks over"
 				target = "themselves"
-			else if (isliving(A) && iscarbon(T) && T != src && zone_selected == BODY_ZONE_PRECISE_GROIN && abs(src.loc.x - T.loc.x) <= 1 && abs(src.loc.y - T.loc.y) <= 1)
-				var/atom/front_turf = get_step(T, T.dir)
-				var/atom/behind_turf = get_step(T, turn(T.dir, 180))
-				var/atom/side_left = get_step(T, turn(T.dir, 90))
-				var/atom/side_right = get_step(T, turn(T.dir, 270))
-				if(behind_turf && src.loc && behind_turf.z == src.loc.z && abs(behind_turf.x - src.loc.x) <= 1 && abs(behind_turf.y - src.loc.y) == 0)
-					zone_text = "ass"
-				else if((side_left && src.loc && side_left.z == src.loc.z && abs(side_left.x - src.loc.x) == 0 && abs(side_left.y - src.loc.y) == 0) || (side_right && src.loc && side_right.z == src.loc.z && abs(side_right.x - src.loc.x) == 0 && abs(side_right.y - src.loc.y) == 0))
-					zone_text = "hips"
-				else if(front_turf && src.loc && front_turf.z == src.loc.z && abs(front_turf.x - src.loc.x) <= 1 && abs(front_turf.y - src.loc.y) == 0)
-					zone_text = "crotch"
-				target = "[T]'s [zone_text]"
-			else if(A.loc == src)
+			if(A.loc == src)
 				target = "[src.p_their()] [A.name]"
-			else if(A.loc.loc == src)
+			if(A.loc.loc == src)
 				message = "[src] looks into"
 				target = "[src.p_their()] [A.loc.name]"
-			else if(isliving(A) && src.cmode)
-				if(!iscarbon(T))
-					target = "\the [T.name]'s [T.simple_limb_hit(zone_selected)]"
-				if(iscarbon(T) && T != src)
-					target = "[T]'s [parse_zone(zone_selected)]"
-			if(m_intent != MOVE_INTENT_SNEAK)
-				visible_message(span_emote("[message] [target]."))
+			if(isliving(A))
+				var/mob/living/T = A
+				var/hitzone = T.simple_limb_hit(zone_selected)
+				var/behind = FALSE
+				var/grabbing = FALSE
+				var/uncovered = get_location_accessible(T, zone_selected)
+				var/penised = FALSE
+				var/pussied = FALSE
+				var/strcheck = FALSE
+				if((src != T && src.dir == T.dir)  || (src == T && fixedeye))
+					behind = TRUE
+				if(ishuman(src))
+					var/obj/item/grabbing/G = get_active_held_item()
+					if(istype(G))
+						if(G.grabbed == T)
+							if(G.sublimb_grabbed == zone_selected)
+								grabbing = TRUE
+				if(!ishuman(T) && hitzone)
+					target = "\the [T.name]'s [hitzone]"
+				else if(ishuman(T))
+					var/mob/living/carbon/human/target_human = T
+					if(target_human.getorganslot(ORGAN_SLOT_PENIS))
+						penised = TRUE
+					if(target_human.getorganslot(ORGAN_SLOT_VAGINA))
+						pussied = TRUE
+					if(T.STASTR >= 12)
+						strcheck = TRUE
+					if(T == src)
+						var/parsed_zone = parse_zone_fancy(zone_selected, cmode, cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, uncovered, penised, pussied, strcheck, TRUE)
+						if(parsed_zone)
+							target = "[src.p_their()] [parsed_zone]"
+					else
+						target = "[T]'s [parse_zone_fancy(zone_selected, cmode, T.cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, uncovered, penised, pussied, strcheck)]"
+			visible_message(span_emote("[message] [target]."))
 
 	var/list/result = A.examine(src)
 	if(result)
 		to_chat(src, result.Join("\n"))
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
-
-/**
- * Point at an atom
- *
- * mob verbs are faster than object verbs. See
- * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
- * for why this isn't atom/verb/pointed()
- *
- * note: ghosts can point, this is intended
- *
- * visible_message will handle invisibility properly
- *
- * overridden here and in /mob/dead/observer for different point span classes and sanity checks
- */
-/mob/verb/pointed(atom/A as mob|obj|turf in view())
-	set name = "Point To"
-	set hidden = 1
-	if(!src || !isturf(src.loc) || !(A in view(client.view, src)))
-		return FALSE
-	if(istype(A, /obj/effect/temp_visual/point))
-		return FALSE
-
-	var/tile = get_turf(A)
-	if (!tile)
-		return FALSE
-
-	new /obj/effect/temp_visual/point(src,invisibility)
-
-	return TRUE
-
-/mob/proc/linepoint(atom/A as mob|obj|turf in view(), params)
-	if(world.time < lastpoint + 50)
-		return FALSE
-
-	if(stat)
-		return FALSE
-
-	if(client)
-		if(!src || !isturf(src.loc) || !(A in view(client.view, src)))
-			return FALSE
-
-	var/turf/tile = get_turf(A)
-	if (!tile)
-		return FALSE
-
-	var/turf/our_tile = get_turf(src)
-	var/obj/visual = new /obj/effect/temp_visual/point/still(our_tile, invisibility)
-	animate(visual, pixel_x = (tile.x - our_tile.x) * world.icon_size + A.pixel_x, pixel_y = (tile.y - our_tile.y) * world.icon_size + A.pixel_y, time = 2, easing = EASE_OUT)
-
-	lastpoint = world.time
-	var/obj/I = get_active_held_item()
-	if(I)
-		src.visible_message("<span class='info'>[src] points [I] at [A].</span>", "<span class='info'>I point [I] at [A].</span>")
-	else
-		src.visible_message("<span class='info'>[src] points at [A].</span>", "<span class='info'>I point at [A].</span>")
-
-	return TRUE
 
 ///Can this mob resist (default FALSE)
 /mob/proc/can_resist()

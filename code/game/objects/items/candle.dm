@@ -136,6 +136,7 @@
 
 /obj/item/candle/candlestick/gold
 	name = "three-stick gold candlestick"
+	desc = "The three-headed golden version of the candlestick, now with more sticks and candles per candlestick."
 	icon_state = "gcandelabra"
 	sellprice = 40
 
@@ -148,6 +149,7 @@
 
 /obj/item/candle/candlestick/silver
 	name = "three-stick silver candlestick"
+	desc = "The three-headed silver version of the candlestick, now with more sticks and candles per candlestick."
 	icon_state = "scandelabra"
 	sellprice = 60
 	is_silver = TRUE
@@ -161,6 +163,7 @@
 
 /obj/item/candle/candlestick/gold/single
 	name = "one-stick gold candlestick"
+	desc = "A golden stick with a little prick at the end made to hold candles on a comfortable way. You could also probably whack someone with it if you're really desperate."
 	icon_state = "singlegcandelabra"
 	sellprice = 30
 
@@ -173,6 +176,7 @@
 
 /obj/item/candle/candlestick/silver/single
 	name = "one-stick silver candlestick"
+	desc = "A golden stick with a little prick at the end made to hold candles on a comfortable way. You could also probably whack someone with it if you're really desperate."
 	icon_state = "singlescandelabra"
 	sellprice = 50
 

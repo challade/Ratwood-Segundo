@@ -27,7 +27,6 @@
 	var/inscryption_key
 
 	food_type = /obj/item/reagent_containers/food/snacks/organ/heart
-	sellprice = 25
 
 /obj/item/organ/heart/Destroy()
 	for(var/datum/culling_duel/D in GLOB.graggar_cullings)
