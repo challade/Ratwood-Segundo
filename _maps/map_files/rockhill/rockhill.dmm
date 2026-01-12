@@ -12241,7 +12241,9 @@
 	despawn_on_idle = 0;
 	faction = list("infernal","neutral")
 	},
-/turf/open/lava,
+/turf/open/floor/rogue/volcanic{
+	desc = "Silky and sharp-smooth, like cracked glass"
+	},
 /area/rogue/indoors/town/fire_chamber{
 	ambientsounds = list('sound/ambience/hell1.ogg');
 	droning_sound = 'sound/music/area/inferno.ogg';
@@ -37310,12 +37312,8 @@
 /turf/open/floor/rogue/blocks/green,
 /area/rogue/indoors/town/warden)
 "lrm" = (
-/obj/structure/fluff/statue/small{
-	pass_flags = 1;
-	pixel_x = -32;
-	pixel_y = -2
-	},
-/turf/open/floor/rogue/blocks,
+/obj/structure/fluff/statue/small,
+/turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/under/town/basement)
 "lrs" = (
 /turf/closed/mineral/rogue,
@@ -84436,9 +84434,9 @@ usF
 usF
 clC
 fTZ
-dJP
 fTZ
-usF
+fTZ
+dJP
 bqk
 azk
 fTZ
@@ -253854,7 +253852,7 @@ mQj
 wbD
 rDV
 iWT
-rDV
+lrm
 iWT
 iWT
 iWT
@@ -254286,7 +254284,7 @@ qTv
 iTw
 iTw
 wyO
-lrm
+cBf
 cBf
 tUs
 ugH
