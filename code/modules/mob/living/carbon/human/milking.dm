@@ -4,6 +4,11 @@
 	if(!get_location_accessible(src, BODY_ZONE_CHEST))
 		return
 
+	// Constructs cannot be milked
+	if(construct)
+		to_chat(user, span_warning("[src] cannot be milked!"))
+		return
+
 	// Check if this is a deathless being with NO_HUNGER trait
 	if(HAS_TRAIT(src, TRAIT_NOHUNGER))
 		return try_blood_milking(user, container)
