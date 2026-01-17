@@ -521,22 +521,22 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(pref_species.use_titles)
 				var/display_title = selected_title ? selected_title : "None"
 				dat += "<b>Race Title:</b> <a href='?_src_=prefs;preference=race_title;task=input'>[display_title]</a><BR>"
-				dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? family : "None"]</a><BR>"
-				if(family != FAMILY_NONE)
-					var/spousename = "Preferred Spouse"
-					if(family == FAMILY_PARTIAL)
-						spousename = "Preferred Parent"
-					dat += "<b>[spousename]:</b> <a href='?_src_=prefs;preference=setspouse'>[setspouse ? setspouse : "None"]</a><BR>"
-					if(family == FAMILY_NEWLYWED || family == FAMILY_FULL)
-						dat += "<b>Preferred Gender:</b> <a href='?_src_=prefs;preference=gender_choice'>[gender_choice ? gender_choice : "Any Gender"]</a><BR>"
-						var/species_text
-						if(xenophobe_pref == 1)
-							species_text = "<font color='#FFA500'>Race only</font>"
-						else if(xenophobe_pref == 2)
-							species_text = "<font color='#aa0202'>Subrace Only</font>"
-						else
-							species_text = "<font color='#1cb308'>Unrestricted</font>"
-						dat += "<b>Restrict Species:</b> <a href='?_src_=prefs;preference=species_choice'>[species_text]</a><BR>"
+			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? family : "None"]</a><BR>"
+			if(family != FAMILY_NONE)
+				var/spousename = "Preferred Spouse"
+				if(family == FAMILY_PARTIAL)
+					spousename = "Preferred Parent"
+				dat += "<b>[spousename]:</b> <a href='?_src_=prefs;preference=setspouse'>[setspouse ? setspouse : "None"]</a><BR>"
+				if(family == FAMILY_NEWLYWED || family == FAMILY_FULL)
+					dat += "<b>Preferred Gender:</b> <a href='?_src_=prefs;preference=gender_choice'>[gender_choice ? gender_choice : "Any Gender"]</a><BR>"
+					var/species_text
+					if(xenophobe_pref == 1)
+						species_text = "<font color='#FFA500'>Race only</font>"
+					else if(xenophobe_pref == 2)
+						species_text = "<font color='#aa0202'>Subrace Only</font>"
+					else
+						species_text = "<font color='#1cb308'>Unrestricted</font>"
+					dat += "<b>Restrict Species:</b> <a href='?_src_=prefs;preference=species_choice'>[species_text]</a><BR>"
 			if(length(pref_species.custom_selection))
 				var/race_bonus_display
 				if(race_bonus)

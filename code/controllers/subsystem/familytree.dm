@@ -329,8 +329,8 @@ SUBSYSTEM_DEF(familytree)
 	if(!H)
 		return
 
-	var/our_race = H.dna.species.base_name
-	var/our_subrace = H.dna.species.sub_name
+	var/our_race = H.dna.species.name
+	var/our_subrace = H.dna.species.name
 	var/adopted = FALSE
 	var/datum/heritage/chosen_house
 	var/list/low_priority_houses = list()
@@ -340,9 +340,9 @@ SUBSYSTEM_DEF(familytree)
 		for(var/datum/heritage/house in families)
 			for(var/datum/family_member/M in house.members)
 				if(M.person && M.person.real_name == H.setspouse)
-					if(M.person.xenophobe == 1 && M.person.dna.species.base_name != our_race)
+					if(M.person.xenophobe == 1 && M.person.dna.species.name != our_race)
 						break
-					if(M.person.xenophobe == 2 && M.person.dna.species.sub_name != our_subrace)
+					if(M.person.xenophobe == 2 && M.person.dna.species.name != our_subrace)
 						break
 					chosen_house = house
 
@@ -446,8 +446,8 @@ SUBSYSTEM_DEF(familytree)
 /datum/controller/subsystem/familytree/proc/AssignToFamily(mob/living/carbon/human/H)
 	if(!H)
 		return
-	var/our_race = H.dna.species.base_name
-	var/our_subrace = H.dna.species.sub_name
+	var/our_race = H.dna.species.name
+	var/our_subrace = H.dna.species.name
 	var/list/eligible_houses = list()
 
 	// Find houses that need a spouse
@@ -469,9 +469,9 @@ SUBSYSTEM_DEF(familytree)
 					if(!member.person.setspouse || member.person.setspouse == H.real_name)
 						var/ok_gender_H = H.pronouns_match(H, member.person)
 						var/ok_gender_M = member.person.pronouns_match(member.person, H)
-						if((member.person.xenophobe == 1 || H.xenophobe == 1) && member.person.dna.species.base_name != our_race)
+						if((member.person.xenophobe == 1 || H.xenophobe == 1) && member.person.dna.species.name != our_race)
 							continue
-						if((member.person.xenophobe == 2 || H.xenophobe == 2) && member.person.dna.species.sub_name != our_subrace)
+						if((member.person.xenophobe == 2 || H.xenophobe == 2) && member.person.dna.species.name != our_subrace)
 							continue
 						if(member.person.familytree_pref == FAMILY_PARTIAL)
 							continue
@@ -538,7 +538,7 @@ SUBSYSTEM_DEF(familytree)
 				continue // skip if gender preferences incompatible
 		if(abs(H.social_rank - potential_spouse.social_rank) > 1)
 			continue
-		if((potential_spouse.xenophobe == 1 || H.xenophobe == 1) && potential_spouse.dna.species.base_name != H.dna.species.base_name)
+		if((potential_spouse.xenophobe == 1 || H.xenophobe == 1) && potential_spouse.dna.species.name != H.dna.species.name)
 			continue
 		if((potential_spouse.xenophobe == 2 || H.xenophobe == 2) && potential_spouse.dna.species.type != H.dna.species.type)
 			continue
@@ -575,7 +575,7 @@ SUBSYSTEM_DEF(familytree)
 			H.MarryTo(chosen_spouse)
 
 /datum/controller/subsystem/familytree/proc/AssignAuntUncle(mob/living/carbon/human/H)
-	var/base_species = H.dna.species.base_name
+	var/base_species = H.dna.species.name
 	var/datum/heritage/chosen_house
 
 	// Find houses with established families that could use an aunt/uncle

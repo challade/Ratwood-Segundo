@@ -528,7 +528,7 @@
 			housename = new_name
 
 		dominant_species = majority_species
-		dominant_race = founder_person?.dna?.species?.base_name
+		dominant_race = founder_person?.dna?.species?.name
 		if(!majority_species)
 			dominant_species = founder_person?.dna?.species?.type
 
