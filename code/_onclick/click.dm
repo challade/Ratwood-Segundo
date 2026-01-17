@@ -11,6 +11,11 @@
 /mob/var/next_move_adjust = 0 //Amount to adjust action/click delays by, + or -
 /mob/var/next_move_modifier = 1 //Value to multiply action/click delays by
 
+// CanReach caching
+/mob/var/atom/last_reach_target
+/mob/var/last_reach_result
+/mob/var/last_reach_time
+/mob/var/obj/item/last_reach_tool
 
 //Delays the mob's next click/action by num deciseconds
 // eg: 10-3 = 7 deciseconds of delay
@@ -130,7 +135,7 @@
 				var/adf = used_intent.clickcd
 				if(istype(rmb_intent, /datum/rmb_intent/aimed))
 					adf = round(adf * CLICK_CD_MOD_AIMED)
-				if(istype(rmb_intent, /datum/rmb_intent/swift))
+				else if(istype(rmb_intent, /datum/rmb_intent/swift))
 					adf = max(round(adf * CLICK_CD_MOD_SWIFT), CLICK_CD_INTENTCAP)
 				changeNext_move(adf,used_hand)
 				return
@@ -223,6 +228,8 @@
 		update_inv_hands()
 		return
 
+	var/turf/my_turf = get_turf(src)
+
 	// operate three levels deep here (item in backpack in src; item in box in backpack in src, not any deeper)
 	if(!isturf(A) && A == loc || (A in contents) || (A.loc in contents) || (A.loc && (A.loc.loc in contents)))
 		// the above ensures adjacency
@@ -238,9 +245,10 @@
 	if(W)
 		if(ismob(A))
 			if(CanReach(A,W))
-				if(get_dist(get_turf(src), get_turf(A)) <= used_intent.reach)
+				var/turf/target_turf = get_turf(A)
+				if(get_dist(my_turf, target_turf) <= used_intent.reach)
 					if(!used_intent.noaa)
-						do_attack_animation(get_turf(A), used_intent.animname, W, used_intent = src.used_intent)
+						do_attack_animation(target_turf, used_intent.animname, W, used_intent = src.used_intent)
 				resolveAdjacentClick(A,W,params)
 				return
 
@@ -291,20 +299,19 @@
 					return
 				if(T)
 					testing("beginautoaim")
-					var/list/mobs_here = list()
+					var/mob/target
 					for(var/mob/M in T)
 						if(M.invisibility || M == src)
 							continue
-						mobs_here += M
-					if(mobs_here.len)
-						var/mob/target = pick(mobs_here)
-						if(target)
-							if(target.Adjacent(src))
-								do_attack_animation(T, used_intent.animname, used_intent.masteritem, used_intent = src.used_intent)
-								resolveAdjacentClick(target,W,params,used_hand)
-								atkswinging = null
-								//update_warning()
-								return
+						target = M
+						break
+					if(target)
+						if(target.Adjacent(src))
+							do_attack_animation(T, used_intent.animname, used_intent.masteritem, used_intent = src.used_intent)
+							resolveAdjacentClick(target,W,params,used_hand)
+							atkswinging = null
+							//update_warning()
+							return
 					if(cmode)
 						resolveAdjacentClick(T,W,params,used_hand) //hit the turf
 					if(!used_intent.noaa)
