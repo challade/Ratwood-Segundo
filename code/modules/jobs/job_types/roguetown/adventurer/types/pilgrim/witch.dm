@@ -162,6 +162,8 @@
 	shapeshift_type = /mob/living/simple_animal/pet/cat/witch_shifted
 	convert_damage = FALSE
 	do_gib = FALSE
+	shifted_speed_increase = 1.35
+	show_true_name = FALSE
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/witch/cat/black
 	shapeshift_type = /mob/living/simple_animal/pet/cat/rogue/black/witch_shifted
@@ -179,6 +181,7 @@
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/rogue/wolf/witch_shifted
 	convert_damage = FALSE
 	do_gib = FALSE
+	show_true_name = FALSE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/witch_shifted
 	name = "lesser volf"
@@ -226,7 +229,9 @@
 	die_with_shapeshifted_form =  FALSE
 	do_gib = FALSE
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/bat
-	knockout_on_death = 30 SECONDS
+	knockout_on_death = 15 SECONDS
+	shifted_speed_increase = 0.75 //25% slower than normal walking speed
+	show_true_name = FALSE
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/witch/crow
 	name = "Zad Form"
@@ -239,5 +244,7 @@
 	die_with_shapeshifted_form =  FALSE
 	do_gib = FALSE
 	knockout_on_death = 15 SECONDS
+	shifted_speed_increase = 0.75 //25% slower than normal walking speed
+	show_true_name = FALSE
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/bat/crow
 	sound = 'sound/vo/mobs/bird/birdfly.ogg'
