@@ -134,7 +134,7 @@
 	icon_state = "clothsash"
 	item_state = "clothsash"
 
-/obj/item/storage/belt/rogue/leather/suspenders/butler
+/obj/item/storage/belt/rogue/suspenders/butler
 	name = "suspenders"
 	desc = "A pair of suspenders which go over the shoulders. Used for keeping one's pants in place in an admittably fashionable style."
 	icon = 'icons/roguetown/clothing/belts.dmi'
