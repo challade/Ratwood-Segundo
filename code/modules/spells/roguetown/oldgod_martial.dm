@@ -330,7 +330,7 @@ Given the nature of Psydon, two of these are INTENDED to be refluffed Tennite sp
 	. = ..()
 	//Handle the mob impact, firstly.
 	if(ismob(target))
-		var/mob/living/M = target
+		var/mob/living/carbon/human/M = target
 		if(M.mob_biotypes & probably_not_friendly)
 			M.adjust_fire_stacks(12, /datum/status_effect/fire_handler/fire_stacks/sunder)
 			M.ignite_mob()
