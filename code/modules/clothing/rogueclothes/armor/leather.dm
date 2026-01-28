@@ -287,6 +287,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
 	icon_state = "bwleathercoat"
 	item_state = "bwleathercoat"
+	sewrepair = TRUE
 	boobed = TRUE
 	slot_flags = ITEM_SLOT_ARMOR
 	armor = ARMOR_LEATHER_GOOD
