@@ -23,7 +23,7 @@
 		return
 
 	if(href_list["ahelp"])
-		if(!check_rights(R_ADMIN, TRUE))
+		if(!check_rights(R_AHELP, TRUE))
 			return
 
 		var/ahelp_ref = href_list["ahelp"]
@@ -34,6 +34,8 @@
 			to_chat(usr, "Ticket [ahelp_ref] has been deleted!")
 
 	else if(href_list["ahelp_tickets"])
+		if(!check_rights(R_AHELP))
+			return
 		GLOB.ahelp_tickets.BrowseTickets(text2num(href_list["ahelp_tickets"]))
 
 	else if(href_list["stickyban"])
@@ -488,8 +490,8 @@
 			to_chat(usr, span_warning("[M] doesn't seem to have an active client."))
 			return
 		var/target_job = SSrole_class_handler.get_advclass_by_name(M.advjob)
+		var/datum/job/mob_job = SSjob.GetJob(M.mind.assigned_role)
 		if(M.mind)
-			var/datum/job/mob_job = SSjob.GetJob(M.mind.assigned_role)
 			if(mob_job)
 				mob_job.current_positions = max(0, mob_job.current_positions - 1)
 			if(target_job)
@@ -502,7 +504,10 @@
 					GLOB.head_bounties -= removing_bounty
 		log_admin("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
 		GLOB.chosen_names -= M.real_name
-		LAZYREMOVE(GLOB.actors_list, M.mobid)
+		if(!mob_job)
+			LAZYREMOVE(GLOB.actors_list[SSjob.bitflag_to_department(WANDERER, FALSE)], M.mobid)
+		else
+			LAZYREMOVE(GLOB.actors_list[SSjob.bitflag_to_department(mob_job.department_flag, mob_job.obsfuscated_job)], M.mobid)
 		LAZYREMOVE(GLOB.roleplay_ads, M.mobid)
 		SSdroning.kill_droning(M.client)
 		SSdroning.kill_loop(M.client)
