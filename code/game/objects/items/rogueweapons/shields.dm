@@ -33,7 +33,6 @@
 	anvilrepair = /datum/skill/craft/carpentry
 	COOLDOWN_DECLARE(shield_bang)
 
-
 /obj/item/rogueweapon/shield/attackby(obj/item/attackby_item, mob/user, params)
 
 	// Shield banging
@@ -114,12 +113,14 @@
 	coverage = 30
 
 /obj/item/rogueweapon/shield/attack_right(mob/user)
-	if(overlays.len)
+	if(length(overlays))
 		..()
 		return
 
 	var/icon/J = new('icons/roguetown/weapons/shield_heraldry.dmi')
-	var/list/istates = J.IconStates()
+	var/list/istates = get_icon_states_cached(J)
+	if(!istates || !length(istates))
+		return
 	for(var/icon_s in istates)
 		if(!findtext(icon_s, "[icon_state]_"))
 			istates.Remove(icon_s)
@@ -560,3 +561,26 @@
 				return list("shrink" = 0.6,"sx" = -5,"sy" = -1,"nx" = 6,"ny" = -1,"wx" = 0,"wy" = -2,"ex" = 0,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0)
 			if("onback")
 				return list("shrink" = 0.6,"sx" = 1,"sy" = 4,"nx" = 1,"ny" = 2,"wx" = 3,"wy" = 3,"ex" = 0,"ey" = 2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
+
+/proc/get_icon_states_cached(icon_or_path)
+	if(!icon_or_path)
+		return null
+
+	var/cache_key
+	var/icon/I
+
+	if(istext(icon_or_path))
+		cache_key = icon_or_path
+		if(!GLOB.IconStates_cache[cache_key])
+			I = icon(icon_or_path)
+			GLOB.IconStates_cache[cache_key] = I.IconStates()
+		return GLOB.IconStates_cache[cache_key]
+
+	if(isicon(icon_or_path))
+		I = icon_or_path
+		cache_key = "[I]"
+		if(!GLOB.IconStates_cache[cache_key])
+			GLOB.IconStates_cache[cache_key] = I.IconStates()
+		return GLOB.IconStates_cache[cache_key]
+
+	return null
