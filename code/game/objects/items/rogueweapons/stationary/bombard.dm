@@ -1,22 +1,26 @@
 /*
 Oooooh boy. This is an odd introduction, and an even worse file path. But hear me out.
-These are ported from a port I did of Escalation(?) on F13, elsewhere, which was picked up and brought elsewhere.
-It's a huge mess. Just know that this is cool. And it kicks ass.
-I've also cleaned this up and made it functional for our purposes. - Carl
+These are ported from a port I did of Escalation(?), on F13, elsewhere, which was picked up and brought elsewhere.
+It was a huge mess. Cleaned up, now. Mostly. Redone for our use. Just know that this is cool. And it kicks ass. - Carl
+
 Design:
  * Deploy bombard.
- * Have someone get you coordinates with the dedicated tool.
- * Punch coords in. How does it work, IC? I don't know. MAGIC!!!!
- * At some point during the above, you fill it with powder and then pack with a rod.
- * LOAD AND FIRE!!!!
+ * Gather coords, known as 'leyline intersection points'(LIP), for the purpose of IC screwery, with your palantir.
+ * Interact with the bombard and put target X-LIP/Y-LIP into it.
+ * Fill it with powder. Ram the powder. Both of these actions take time.
+ * Load, after which it automatically fires.
+ * Dial adjustments as required, if the first shot misses, or you're trying to pre-adjust.
+ * Repeat the above, from interaction point onwards. Coords can be reused, but it's expensive to spam this.
+ * The only interactions above applicable to a non-Fusilier are filling, ramming and packing/unpacking. Everything else is barred.
+
 Balance:
-This is, as of the moment, limited to Pioneer. To even the playing field for brigands.
+This is, as of the moment, intended to be limited to Pioneer. To even the playing field for brigands.
 Playing field? Eight MAAs, two knights, one KC, eight mercs, etc.
 Lets have the funny guys have to come to the bandits, rather than the other way around.
 This is incredibly expensive to run. Old Dragonscale levels of expensive.
 It's also VERY loud, as in most of the map is going to hear it firing if in range.
-This will also KILL people. It is absurdly strong, or at least the projectiles are.
-Requirement of the fusilier trait for aiming and gathering coordinates should limit the intensity.
+This will also KILL people. At least, some of the projectiles.
+Requirement of the fusilier trait for aiming and gathering coordinates should limit the intensity, combined with absurd costs.
 */
 /obj/structure/bombard
 	name = "portable bombard"
@@ -36,11 +40,28 @@ Requirement of the fusilier trait for aiming and gathering coordinates should li
 	var/busy = 0
 	var/fixed = 0//If 1, bombard cannot be unarchored and moved. Used by the heavy bombard, to prevent repositioning.
 	var/travel_time = 45
-	var/max_shells = 1
-	var/list/shells = new/list
 	var/powder = FALSE
 	var/rammed = FALSE
 	var/heavy = FALSE//Does this use heavier cannonballs, rather than smokepowder charges? By default, we use smokepowder.
+
+/obj/structure/bombard/examine(mob/user)
+	. = ..()//Below displays deobfuscated coords. Is that a good idea? No. But it works. Also lets you math things out easier I guess.
+	if(HAS_TRAIT(user, TRAIT_FUSILIER))
+		. += "...<br>\
+			<small>'X-LIP' Dial: <span class='warning'>[xinput]</span> <br>\
+			'Y-LIP' Dial: <span class='warning'>[yinput]</span> <br>\
+			'X-LIP' Adjustment: <span class='warning'>[xdial]</span> <br>\
+			'Y-LIP' Adjustment: <span class='warning'>[ydial]</span> <br>\
+			Expected Deviancy: <span class='danger'>[offset_per_turfs]%</span></small>"//Just for fluff.
+	else
+		. += "...<br>\
+		<small>As expected, you've no understanding of the smaller details. Someone trained with smokepowder might know...</small>"
+	if(!heavy)
+		. += "...<br>\
+		<small>This bombard is capable of being packed up, with MMB.</small>"
+	else
+		. += "...<br>\
+		<small>This bombard is fixed in place. Far too heavy to move!</small>"
 
 /obj/structure/bombard/attack_hand(mob/user as mob)
 	if(busy)
@@ -60,31 +81,31 @@ Requirement of the fusilier trait for aiming and gathering coordinates should li
 		to_chat(user, "<span class='warning'>You refrain from firing the [src] while indoors.</span>")
 		return
 
-	var/choice = alert(user, "Would you like to set the bombard's target coordinates?","Bombard Dialing", "Target","Dial","Cancel")
+	var/choice = alert(user, "Would you like to set the bombard's target?","Bombard Dialing", "Target","Dial","Cancel")
 	if (choice == "Cancel")
 		return
 	if (choice == "Target")
-		var/temp_targ_x = input("Set longitude of strike.") as num
+		var/temp_targ_x = input("Set X-LIP of strike.") as num
 		if(xdial + deobfuscate_x(temp_targ_x) > world.maxx || xdial + deobfuscate_x(temp_targ_x) < 0)
-			to_chat(user, "<span class='warning'>You cannot aim at this coordinate, it is outside of your reach.</span>")
+			to_chat(user, "<span class='warning'>You cannot aim at this target, it is outside of your reach.</span>")
 			return
-		var/temp_targ_y = input("Set latitude of strike.") as num
+		var/temp_targ_y = input("Set Y-LIP of strike.") as num
 		if(ydial + deobfuscate_y(temp_targ_y) > world.maxy || ydial + deobfuscate_y(temp_targ_y) < 0)
-			to_chat(user, "<span class='warning'>You cannot aim at this coordinate, it is outside of your reach.</span>")
+			to_chat(user, "<span class='warning'>You cannot aim at this target, it is outside of your reach.</span>")
 			return
 		var/turf/T = locate(deobfuscate_x(temp_targ_x) + xdial, deobfuscate_y(temp_targ_y) + ydial, z)
 		if(get_dist(loc, T) < 10)
-			to_chat(user, "<span class='warning'>You cannot aim at this coordinate, it is too close to your bombard.</span>")
+			to_chat(user, "<span class='warning'>You cannot aim at this target, it is too close to your bombard.</span>")
 			return
 		if(busy)
 			to_chat(user, "<span class='warning'>Someone else is currently using this bombard.</span>")
 			return
 		user.visible_message("<span class='notice'>([user] starts adjusting [src]'s firing angle and distance.</span>",
-		"<span class='notice'>You start adjusting [src]'s firing angle and distance to match the new coordinates.</span>")
+		"<span class='notice'>You start adjusting [src]'s firing angle and distance to match the new target's location.</span>")
 		busy = 1
 		if(do_after(user, 30, src))
 			user.visible_message("<span class='notice'>([user] finishes adjusting [src]'s firing angle and distance.</span>",
-			"<span class='notice'>You finish adjusting [src]'s firing angle and distance to match the new coordinates.</span>")
+			"<span class='notice'>You finish adjusting [src]'s firing angle and distance to match the new target's location.</span>")
 			busy = 0
 			xinput = deobfuscate_x(temp_targ_x)
 			yinput = deobfuscate_y(temp_targ_y)
@@ -95,33 +116,33 @@ Requirement of the fusilier trait for aiming and gathering coordinates should li
 		else
 			busy = 0
 	if (choice == "Dial")
-		var/temp_dial_x = input("Set longitude adjustement from -10 to 10.") as num
+		var/temp_dial_x = input("Set X-LIP adjustement from -10 to 10.") as num
 		if(temp_dial_x + xinput > world.maxx || temp_dial_x + xinput < 0)
-			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is outside of the area of operations.</span>")
+			to_chat(user, "<span class='warning'>You cannot dial to this X-LIP, it is outside of the bombard's reach.</span>")
 			return
 		if(temp_dial_x < -10 || temp_dial_x > 10)
-			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is too far away. You need to set [src] up instead.</span>")
+			to_chat(user, "<span class='warning'>You cannot dial to this target, it is too far away. You need to set [src] up instead.</span>")
 			return
-		var/temp_dial_y = input("Set latitude adjustement from -10 to 10.") as num
+		var/temp_dial_y = input("Set Y-LIP adjustement from -10 to 10.") as num
 		if(temp_dial_y + yinput > world.maxy || temp_dial_y + yinput < 0)
-			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is outside of the area of operations.</span>")
+			to_chat(user, "<span class='warning'>You cannot dial to this Y-LIP, it is outside of the bombard's reach.</span>")
 			return
 		var/turf/T = locate(xinput + temp_dial_x, yinput + temp_dial_y, z)
 		if(get_dist(loc, T) < 10)
-			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is too close to your bombard.</span>")
+			to_chat(user, "<span class='warning'>You cannot dial to this LIP, it is too close to your bombard.</span>")
 			return
 		if(temp_dial_y < -10 || temp_dial_y > 10)
-			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is too far away. You need to set [src] up instead.</span>")
+			to_chat(user, "<span class='warning'>You cannot dial to this target, it is too far away. You need to set [src] up instead.</span>")
 			return
 		if(busy)
 			to_chat(user, "<span class='warning'>Someone else is currently using this bombard.</span>")
 			return
 		user.visible_message("<span class='notice'>[user] starts dialing [src]'s firing angle and distance.</span>",
-		"<span class='notice'>You start dialing [src]'s firing angle and distance to match the new coordinates.</span>")
+		"<span class='notice'>You start dialing [src]'s firing angle and distance to match the new target's location.</span>")
 		busy = 1
 		if(do_after(user, 15, src))
 			user.visible_message("<span class='notice'>[user] finishes dialing [src]'s firing angle and distance.</span>",
-			"<span class='notice'>You finish dialing [src]'s firing angle and distance to match the new coordinates.</span>")
+			"<span class='notice'>You finish dialing [src]'s firing angle and distance to match the new target's location.</span>")
 			busy = 0
 			xdial = temp_dial_x
 			ydial = temp_dial_y
@@ -150,13 +171,13 @@ Requirement of the fusilier trait for aiming and gathering coordinates should li
 		to_chat(user, "<span class='danger'>[src] is not filled with smokepowder!</span>")
 		return
 
-	if(istype(O, /obj/item/ramrod))
+	if(istype(O, /obj/item/bombard_sponge))
 		if(rammed)
 			user.visible_message("<span class='notice'>The [src] is already packed properly with smokepowder!</span>")
 			return
 		else
 			user.visible_message("<span class='notice'>[user] begins packing the [src] with smokepowder.</span>")
-			playsound(src, "modular_helmsguard/sound/arquebus/ramrod.ogg",  100)
+			playsound(src, "modular_azurepeak/sound/spellbooks/bladescrape.ogg",  100)
 			if(do_after(user, 8 SECONDS, src))
 				user.visible_message("<span class='notice'>[user] has finished packing the [src] with smokepowder.</span>")
 				rammed = TRUE
@@ -197,7 +218,7 @@ Requirement of the fusilier trait for aiming and gathering coordinates should li
 			visible_message("\icon[src] <span class='danger'>The [name] fires!</span>")
 			user.dropItemToGround(cannonball, src)
 			playsound(loc, 'sound/combat/bombard/mortar_fire.ogg', 50, 1)
-			loud_message("The sound of a cannon firing can be heard", hearing_distance = 64)
+			loud_message("The sound of a cannon firing can be heard", hearing_distance = 82)
 			busy = 0
 			firing = 1
 			flick(icon_state + "_fire", src)
@@ -207,15 +228,16 @@ Requirement of the fusilier trait for aiming and gathering coordinates should li
 				shake_camera(M, 3, 1)
 			spawn(travel_time) //What goes up
 				playsound(T, 'sound/combat/bombard/mortar_long_whistle.ogg', 50, 1)
-				spawn(45) //Must go down //This should always be 45 ticks!
+				spawn(45) //Must go down
 					cannonball.detonate(T)
-					loud_message("An explosion echos in the ears of those whom hear it", hearing_distance = 82)
 
 					qdel(cannonball)
 					xdial = 0//Reset after each shot.
 					ydial = 0
 					xinput = 0
 					yinput = 0
+					powder = FALSE
+					rammed = FALSE
 
 					firing = 0
 
@@ -267,6 +289,8 @@ Requirement of the fusilier trait for aiming and gathering coordinates should li
 	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
 	icon_state = "temp_bombard_primary"
 	w_class = WEIGHT_CLASS_BULKY
+	force = 5
+	possible_item_intents = list(INTENT_GENERIC)
 
 /obj/item/bombard_kit/attack_self(mob/user)
 	user.visible_message("<span class='notice'>[user] starts deploying [src].",
@@ -278,4 +302,4 @@ Requirement of the fusilier trait for aiming and gathering coordinates should li
 		playsound(loc, 'sound/combat/shieldraise.ogg', 25, 1)
 		var/obj/structure/bombard/M = new /obj/structure/bombard(get_turf(user))
 		M.dir = user.dir
-		del(src)
+		qdel(src)
