@@ -32,12 +32,14 @@
 /obj/item/storage/belt/rogue/AltRightClick(mob/user)
 	if(!attached_toy)
 		return
+	if(!isliving(user) || !user.TurfAdjacent(src))
+		return
 	if(user.get_active_held_item())
 		to_chat(user, span_info("I can't do that with my hand full!"))
 		return
 	user.visible_message(span_warning("[user] removes \the [attached_toy] from \the [initial(name)]."))
 	vis_contents -= attached_toy
-	if(!usr.put_in_hands(attached_toy))
+	if(!user.put_in_hands(attached_toy))
 		var/atom/movable/S = attached_toy
 		S.forceMove(get_turf(src))
 	attached_toy.update_icon()
