@@ -437,19 +437,14 @@
 			return
 	playsound(C.loc, "genblunt", 100, FALSE, -1)
 	C.next_attack_msg.Cut()
-	if(isdoll(C)) {
+	if(isdoll(C)) 
 		armor_block = C.getarmor(sublimb_grabbed, "blunt")
 		if(armor_block < 1)
-			
 		else
-		
 			C.apply_damage(damage, BRUTE, limb_grabbed, armor_block)
-	}
-	else {
-	
+	else 
 		armor_block = C.run_armor_check(limb_grabbed, "slash")
 		C.apply_damage(damage, BRUTE, limb_grabbed, armor_block)
-	}	
 	C.apply_damage(damage, BRUTE, limb_grabbed, armor_block)
 	limb_grabbed.bodypart_attacked_by(BCLASS_TWIST, damage, user, sublimb_grabbed, crit_message = TRUE)
 	limb_grabbed.bodypart_attacked_by(BCLASS_TWIST, damage, user, sublimb_grabbed, crit_message = TRUE)
@@ -473,7 +468,7 @@
 		
 		if(armor_block >= 1)
 			target.visible_message(span_danger("[target]'s [parse_zone(sublimb_grabbed)] fails to be twisted off!"), \
-				span_danger("[user] Tries to twist my [parse_zone(sublimb_grabbed)] out of it's socket but the armor keeps it in place!"))
+				span_danger("[user] tries to twist my [parse_zone(sublimb_grabbed)] out of it's socket but the armor keeps it in place!"))
 			to_chat(user, span_warning("[target]'s [parse_zone(sublimb_grabbed)] stays in it's socket because of [target]'s armor!"))
 			return
 
@@ -503,7 +498,7 @@
 		var/obj/item/equipped_nodrop = target_species.get_nodrop_head()
 		if(equipped_nodrop)
 			target.visible_message(span_danger("[target]'s head fails to be twisted off!"), \
-				span_danger("[user] Tries to twist my head off but the [equipped_nodrop.name] keeps it bound to my neck!"))
+				span_danger("[user] tries to twist my head off but the [equipped_nodrop.name] keeps it bound to my neck!"))
 			to_chat(user, span_warning("[target]'s head stays bound to their neck because of the [equipped_nodrop.name]!"))
 			return
 
