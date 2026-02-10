@@ -88,21 +88,6 @@
 	cost = 10	// Hahaha why not
 	contains = list(/obj/item/soap)
 
-/datum/supply_pack/rogue/Things/zenarii
-	name = "Five Zenarii"
-	cost = 60
-	contains = list(/obj/item/roguecoin/gold = 5)
-
-/datum/supply_pack/rogue/Things/ziliqua
-	name = "Five Ziliqua"
-	cost = 35
-	contains = list(/obj/item/roguecoin/silver = 5)
-
-/datum/supply_pack/rogue/Things/zennies
-	name = "Five Zennies"
-	cost = 10
-	contains = list(/obj/item/roguecoin/copper = 5)
-
 /////////////
 // POTIONS //
 /////////////
