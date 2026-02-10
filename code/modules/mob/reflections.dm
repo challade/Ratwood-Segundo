@@ -10,6 +10,9 @@
 			return 150
 	return 0
 
+/turf
+	reflection_type = null
+
 /obj/effect/reflection
 	layer = TURF_LAYER + 0.1
 	plane = FLOOR_PLANE
