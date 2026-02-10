@@ -11,7 +11,7 @@
 	return 0
 
 /turf
-	reflection_type = null
+	var/reflection_type = null
 
 /obj/effect/reflection
 	layer = TURF_LAYER + 0.1
