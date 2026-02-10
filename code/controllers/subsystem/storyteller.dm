@@ -173,6 +173,8 @@ SUBSYSTEM_DEF(gamemode)
 	/// Calculated effective pop after weighing garrison & holy warriors at 2x
 	var/effective_pop = 0
 
+	var/storyteller_name = "SECRET"
+
 	/// Is storyteller secret or not
 	var/secret_storyteller = FALSE
 
@@ -763,6 +765,7 @@ SUBSYSTEM_DEF(gamemode)
 	if(!secret_storyteller)
 		send_to_playing_players(span_notice("<b>Storyteller is [current_storyteller.name]!</b>"))
 		send_to_playing_players(span_notice("[current_storyteller.welcome_text]"))
+		storyteller_name = current_storyteller.name
 
 /// Panel containing information, variables and controls about the gamemode and scheduled event
 /datum/controller/subsystem/gamemode/proc/admin_panel(mob/user)
