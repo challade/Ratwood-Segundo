@@ -584,7 +584,7 @@
 
 	//ID
 	if(wear_ring && !(SLOT_RING in obscured))
-		var/str = "[wear_ring.get_examine_string(user)] on [m2] hands. "
+		var/str = "[m3] [wear_ring.get_examine_string(user)] on [m2] hands. "
 		if(is_smart && istype(wear_ring, /obj/item/clothing/ring/active))
 			var/obj/item/clothing/ring/active/AR = wear_ring
 			if(AR.cooldowny)
