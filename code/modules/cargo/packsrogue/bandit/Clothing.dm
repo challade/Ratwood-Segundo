@@ -117,19 +117,34 @@
 	cost = 5
 	contains = list(/obj/item/clothing/cloak/wickercloak)
 
+////////////////
+//	 Shirts   //
+////////////////
 
+/datum/supply_pack/rogue/Clothing/shirt
+	name = "Shirt"
+	cost = 5
+	contains = list(/obj/item/clothing/suit/roguetown/shirt/undershirt)
 
+/datum/supply_pack/rogue/Clothing/tunic
+	name = "Tunic"
+	cost = 5
+	contains = list(/obj/item/clothing/suit/roguetown/shirt/tunic)
 
+/datum/supply_pack/rogue/Clothing/fancycoat
+	name = "Fancy Coat"
+	cost = 5
+	contains = list(/obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat)
 
+/datum/supply_pack/rogue/Clothing/chemise
+	name = "Chemise"
+	cost = 5
+	contains = list(/obj/item/clothing/suit/roguetown/shirt/dress/silkdress)
 
-
-
-
-
-
-
-
-	
+/datum/supply_pack/rogue/Clothing/silkdress
+	name = "Silky Dress"
+	cost = 5
+	contains = list(/obj/item/clothing/suit/roguetown/shirt/dress/silkydress)	
 
 /////////////////////
 // ECCENTRIC STUFF //
@@ -159,6 +174,11 @@
 	name = "Wizard's Hat"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/wizhat)
+
+/datum/supply_pack/rogue/Clothing/wizrobe
+	name = "Wizard's Robes"
+	cost = 5
+	contains = list(/obj/item/clothing/suit/roguetown/shirt/robe/wizard)
 
 /datum/supply_pack/rogue/Clothing/witchhat
 	name = "Witch's Hat"
