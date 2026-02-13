@@ -2535,6 +2535,7 @@
 #include "code\modules\roguetown\roguestock\bounties.dm"
 #include "code\modules\roguetown\roguestock\import.dm"
 #include "code\modules\roguetown\roguestock\stockpile_food.dm"
+#include "code\modules\roguetown\roguestock\stockpile_seafood.dm"
 #include "code\modules\roguetown\roguestock\stockpile_fruit.dm"
 #include "code\modules\roguetown\roguestock\stockpile_rawmat.dm"
 #include "code\modules\slave_collar\collar_master_component.dm"
