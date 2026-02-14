@@ -291,6 +291,8 @@
 			else
 				to_chat(user, span_warning("I pull the iron away."))
 				return TRUE
+		if(!QDELETED(branding_part) && istype(branding_part)) // if targeted body part still exists, apply damage
+			target.apply_damage(30, BURN, branding_part)
 		target.Knockdown(10)
 	else if(user.zone_selected == BODY_ZONE_PRECISE_NECK || user.zone_selected == BODY_ZONE_HEAD && alert("Brand their neck?",,"Yes", "No") == "Yes") // if targeting the head, ask to brand their neck, otherwise fallback to genetic body zone part
 		var/obj/item/bodypart/head/neck = branding_part
@@ -300,6 +302,7 @@
 			to_chat(user, span_warning("I reburn over the existing marking."))
 		user.visible_message(span_info("[target] writhes as \the [src] sears onto their neck! The fresh brand reads \"[setbranding]\"."))
 		neck.branded_writing_on_neck = setbranding
+		target.apply_damage(30, BURN, neck)
 		target.Knockdown(10)
 	else // generic body part
 		if(QDELETED(branding_part) || !user.Adjacent(target)) // body part no longer exists/moved away
@@ -308,6 +311,7 @@
 			to_chat(user, span_warning("I reburn over the existing marking."))
 		user.visible_message(span_info("[target] writhes as \the [src] sears onto their [branding_part.name]! The fresh brand reads \"[setbranding]\"."))
 		branding_part.branded_writing = setbranding
+		target.apply_damage(30, BURN, branding_part)
 
 	to_chat(target, span_userdanger("You have been branded!"))
 	target.emote(prob(50) ? "painscream" : "scream", forced = TRUE)
