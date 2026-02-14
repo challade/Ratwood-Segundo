@@ -71,6 +71,11 @@
 	cost = 15
 	contains = list(/obj/item/reagent_containers/powder/spice)
 
+/datum/supply_pack/rogue/Medicaments/suidust
+	name = "Sui Dust"
+	cost = 20
+	contains = list(/obj/item/alch/transisdust)
+
 /////////////////
 // PROSTHETICS //
 /////////////////
