@@ -257,7 +257,7 @@
 	if(user.zone_selected == BODY_ZONE_PRECISE_GROIN) // if targeting the groin, handle marking buttocks and genitals instead of a single chest zone
 		var/answer = tgui_alert(user, "What do you wish to brand?", "Please answer in [DisplayTimeText(100)]!", list("Buttocks", "Loins", "Cancel"), 100)
 		if(!answer || answer == "Cancel")
-			to_chat(user, span_warning("I pull the iron away."))
+			to_chat(user, span_warning("I pull \the [src] away."))
 			if(!branding_self)
 				to_chat(target, span_userdanger("[user] pulls \the [src] away."))
 			return TRUE
@@ -286,7 +286,7 @@
 			available_loins += "Cancel"
 			answer = tgui_alert(user, "What do you wish to brand?", "Please answer in [DisplayTimeText(100)]!", available_loins, 100)
 			if(!answer || answer == "Cancel")
-				to_chat(user, span_warning("I pull the iron away."))
+				to_chat(user, span_warning("I pull \the [src] away."))
 				if(!branding_self)
 					to_chat(target, span_userdanger("[user] pulls \the [src] away."))
 				return TRUE
@@ -317,7 +317,7 @@
 	else if(check_zone == BODY_ZONE_HEAD) // targeting head
 		var/answer = tgui_alert(user, "What do you wish to brand?", "Please answer in [DisplayTimeText(100)]!", list("Head", "Mouth", "Neck", "Cancel"), 100)
 		if(!answer || answer == "Cancel")
-			to_chat(user, span_warning("I pull the iron away."))
+			to_chat(user, span_warning("I pull \the [src] away."))
 			if(!branding_self)
 				to_chat(target, span_userdanger("[user] pulls \the [src] away."))
 			return TRUE
@@ -360,7 +360,7 @@
 		target.apply_damage(20, BURN, branding_part)
 		to_chat(target, span_userdanger("You have been branded!"))
 	else
-		to_chat(user, span_warning("I pull the iron away."))
+		to_chat(user, span_warning("I pull \the [src] away."))
 		if(!branding_self)
 			to_chat(target, span_userdanger("[user] pulls \the [src] away."))
 		return TRUE
