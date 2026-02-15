@@ -1187,9 +1187,7 @@
 	return TRUE
 
 /datum/spell_command/flames/proc/do_fire_damage(list/turfs, strength)
-	var/flame_strength = 0
-	if(strength > 0)
-		flame_strength = 1
+	var/flame_strength = min(strength, 2)
 	for(var/turf/T in turfs)
 		explosion(T, -1, 0, strength, strength + 1, 0, flame_range = flame_strength)
 
