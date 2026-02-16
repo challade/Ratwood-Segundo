@@ -20,13 +20,13 @@
 /datum/mapGeneratorModule/bogratnospawnsgrass
 	clusterCheckFlags = CLUSTER_CHECK_NONE
 	allowed_turfs = list(/turf/open/floor/rogue/grass)
-	spawnableTurfs = list(/turf/open/floor/rogue/grass/nospawn = 60)
+	spawnableTurfs = list(/turf/open/floor/rogue/grass/nospawn = 30)
 	allowed_areas = list(/area/rogue/outdoors/bograt)
 
 /datum/mapGeneratorModule/bograt
 	clusterCheckFlags = CLUSTER_CHECK_NONE
 	allowed_turfs = list(/turf/open/floor/rogue/dirt, /turf/open/floor/rogue/grass, /turf/open/floor/rogue/grassred, /turf/open/floor/rogue/grassyel, /turf/open/floor/rogue/grasscold, /turf/open/floor/rogue/grassgrey)
-	excluded_turfs = list(/turf/open/floor/rogue/dirt/road)
+	excluded_turfs = list(/turf/open/floor/rogue/dirt/road, /turf/open/floor/rogue/dirt/nospawn, /turf/open/floor/rogue/grass/nospawn)
 	spawnableAtoms = list(/obj/structure/flora/newtree = 2,
 							/obj/structure/flora/roguetree= 7,
 							/obj/structure/flora/roguegrass/bush = 5,
@@ -34,8 +34,8 @@
 							/obj/structure/flora/roguegrass/maneater = 2,
 							/obj/structure/flora/roguegrass/maneater/real/juvenile = 1,
 							/obj/item/grown/log/tree/stick = 4,
-							/obj/structure/flora/roguetree/stump/log = 5,
-							/obj/structure/flora/roguetree/stump = 2,
+							/obj/structure/flora/roguetree/stump/log = 3,
+							/obj/structure/flora/roguetree/stump = 1.5,
 							/obj/structure/glowshroom = 1,
 							/obj/structure/flora/ausbushes/ppflowers = 0.4,
 							/obj/structure/flora/ausbushes/ywflowers = 0.3,
