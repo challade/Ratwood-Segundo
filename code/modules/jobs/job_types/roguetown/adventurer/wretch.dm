@@ -60,10 +60,6 @@
 
 // Proc for wretch to select a bounty
 /proc/wretch_select_bounty(mob/living/carbon/human/H)
-	var/wanted = input(H, "Are you wanted by the kingdom?", "You will be more skilled from your experience") as anything in list("Yes", "No")
-	if(wanted == "No") 
-		to_chat(src, span_warning("I am still relatively new to the group. My crimes have gone unnoticed so far, but I lack experience."))
-		return null
 	var/bounty_poster = input(H, "Who placed a bounty on you?", "Bounty Poster") as anything in list("The Justiciary of The Vale", "The Grenzelhoftian Holy See", "The Otavan Orthodoxy")
 	// Felinid said we should gate it at 100 or so on at the lowest, so that wretch cannot ezmode it.
 	var/bounty_severity = input(H, "How severe are your crimes?", "Bounty Amount") as anything in list("Misdeed", "Harm towards lyfe", "Horrific atrocities")
@@ -74,9 +70,6 @@
 	var/descriptor_body = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_BODY), "%DESC1%")
 	var/descriptor_voice = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_VOICE), "%DESC1%")
 	var/bounty_total = rand(100, 400) // Just in case
-	var/my_crime = input(H, "What is your crime?", "Crime") as text|null
-	if (!my_crime)
-		my_crime = "crimes against the Crown"
 	switch(bounty_severity)
 		if("Misdeed")
 			bounty_total = rand(100, 200)
@@ -88,27 +81,11 @@
 				GLOB.outlawed_players += H.real_name
 			else
 				GLOB.excommunicated_players += H.real_name
-	if(bounty_severity == "Misdeed")
-		add_bounty_obscure(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, bounty_poster)
-	else if(bounty_severity == "Harm towards lyfe")
-		add_bounty_noface(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, bounty_poster)
-	else
-		add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, bounty_poster)
-		var/skillbuff = input(H, "Your experience grants you a boon", "Choose An Attribute") as anything in list("Strength", "Perception", "Intelligence", "Constitution", "Willpower", "Speed")
-		switch(skillbuff)
-			if("Strength")
-				H.change_stat(STATKEY_STR, 1)
-			if("Perception")
-				H.change_stat(STATKEY_PER, 1)
-			if("Intelligence")
-				H.change_stat(STATKEY_INT, 1)
-			if("Constitution")
-				H.change_stat(STATKEY_CON, 1)
-			if("Willpower")
-				H.change_stat(STATKEY_WIL, 1)
-			if("Speed")
-				H.change_stat(STATKEY_SPD, 1)
-	to_chat(H, span_danger("You are playing an Antagonist role. By choosing to spawn as a Wretch, you are expected to actively create conflict with other players regardless of bounty status. Failing to play this role with the appropriate gravitas may result in punishment for Low Roleplay standards."))
+	var/my_crime = input(H, "What is your crime?", "Crime") as text|null
+	if (!my_crime)
+		my_crime = "crimes against the Crown"
+	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, bounty_poster)
+	to_chat(H, span_danger("You are playing an Antagonist role. By choosing to spawn as a Wretch, you are expected to actively create conflict with other players. Failing to play this role with the appropriate gravitas may result in punishment for Low Roleplay standards."))
 
 /proc/update_wretch_slots()
 	var/datum/job/wretch_job = SSjob.GetJob("Wretch")

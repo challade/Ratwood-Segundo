@@ -10,9 +10,10 @@
 	traits_applied = list(TRAIT_MAGEARMOR, TRAIT_ARCYNE_T3, TRAIT_ALCHEMY_EXPERT)
 	// Same stat spread as necromancer, same reasoning
 	subclass_stats = list(
-		STATKEY_INT = 3,	// +1 INT and +1 SPD with bounty
+		STATKEY_INT = 4,
 		STATKEY_PER = 2,
-		STATKEY_WIL = 1
+		STATKEY_WIL = 1,
+		STATKEY_SPD = 1
 	)
 	subclass_spellpoints = 27 // Unlike Rogue Mage, who gets 6 but DExpert, this one don't have DExpert but have more spell points than anyone but the CM.
 	subclass_skills = list(
@@ -82,10 +83,3 @@
 			backr = /obj/item/rogueweapon/woodstaff/amethyst
 		if("toper-focused staff")
 			backr = /obj/item/rogueweapon/woodstaff/toper
-
-/datum/outfit/job/roguetown/wretch/hedgemage/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == H.real_name || b.target_hidden == H.real_name)
-			H.change_stat(STATKEY_INT, 1)
-			H.change_stat(STATKEY_SPD, 1)

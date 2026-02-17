@@ -8,8 +8,8 @@
 	traits_applied = list( TRAIT_CICERONE, TRAIT_NOSTINK, TRAIT_MEDICINE_EXPERT, TRAIT_ALCHEMY_EXPERT)
 	maximum_possible_slots = 1 //They spawn with killer's ice lol I'm limiting this shit 
 	subclass_stats = list(
-		STATKEY_INT = 3,	// +1 INT and +1 PER with bounty
-		STATKEY_PER = 2,
+		STATKEY_INT = 4,
+		STATKEY_PER = 3,
 		STATKEY_CON = 2
 	)
 	subclass_skills = list(
@@ -69,10 +69,3 @@
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/acidsplash)
 		wretch_select_bounty(H)
-
-/datum/outfit/job/roguetown/wretch/plaguebearer/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == H.real_name || b.target_hidden == H.real_name)
-			H.change_stat(STATKEY_INT, 1)
-			H.change_stat(STATKEY_PER, 1)

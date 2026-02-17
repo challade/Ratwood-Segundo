@@ -12,9 +12,9 @@
 	cmode_music = 'sound/music/cmode/antag/combat_thewall.ogg' // same as new hedgeknight music
 	// Deserter are the knight-equivalence. They get a balanced, straightforward 2 2 3 statspread to endure and overcome.
 	subclass_stats = list(
-		STATKEY_WIL = 3,	// +1 CON and +1 STR with bounty
-		STATKEY_CON = 1,
-		STATKEY_STR = 1
+		STATKEY_WIL = 3,
+		STATKEY_CON = 2,
+		STATKEY_STR = 2
 	)
 	subclass_skills = list(
 		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
@@ -125,12 +125,7 @@
 		/obj/item/reagent_containers/glass/bottle/alchemical/healthpot = 1,	//Small health vial
 		)
 
-/datum/outfit/job/roguetown/wretch/deserter/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == H.real_name || b.target_hidden == H.real_name)
-			H.change_stat(STATKEY_CON, 1)
-			H.change_stat(STATKEY_STR, 1)
+
 
 /datum/advclass/wretch/deserter/maa
 	name = "Disgraced Man at Arms"
@@ -142,9 +137,10 @@
 	// Slightly more rounded. These can be nudged as needed.
 	traits_applied = list(TRAIT_MEDIUMARMOR)
 	subclass_stats = list(
-		STATKEY_STR = 2,	// +1 WILL and +1 CON with bounty
-		STATKEY_WIL = 1,
+		STATKEY_STR = 2,
+		STATKEY_WIL = 2,
 		STATKEY_INT = 1,
+		STATKEY_CON = 1,
 		STATKEY_PER = 1,
 	)
 	subclass_skills = list(
@@ -238,13 +234,6 @@
 
 	backpack_contents = list(/obj/item/natural/cloth = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch/lantern/prelit = 1, /obj/item/rogueweapon/scabbard/sheath = 1)
 
-/datum/outfit/job/roguetown/wretch/desertermaa/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == H.real_name || b.target_hidden == H.real_name)
-			H.change_stat(STATKEY_WIL, 1)
-			H.change_stat(STATKEY_CON, 1)
-
 /obj/effect/proc_holder/spell/invoked/order
 	name = ""
 	range = 5
@@ -256,6 +245,7 @@
 	recharge_time = 2 MINUTES
 	miracle = FALSE
 	sound = 'sound/magic/inspire_02.ogg'
+
 
 /obj/effect/proc_holder/spell/invoked/order/retreat
 	name = "Tactical Retreat!"

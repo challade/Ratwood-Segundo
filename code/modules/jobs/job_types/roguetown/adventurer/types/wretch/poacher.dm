@@ -9,9 +9,9 @@
 	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_WOODSMAN, TRAIT_OUTDOORSMAN, TRAIT_SURVIVAL_EXPERT)
 	// No straight upgrade to perception / speed to not stack one stat too high, but still stronger than MAA Skirm out of town.
 	subclass_stats = list(
-		STATKEY_PER = 2,	// +1 SPD and +1 WIL with bounty
-		STATKEY_SPD = 1,
-		STATKEY_WIL = 1,
+		STATKEY_PER = 2,
+		STATKEY_SPD = 2,
+		STATKEY_WIL = 2,
 		STATKEY_CON = 1
 	)
 	subclass_skills = list(
@@ -78,10 +78,3 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/bows, 5, TRUE)
 				head = /obj/item/clothing/head/roguetown/duelhat
 		wretch_select_bounty(H)
-
-/datum/outfit/job/roguetown/wretch/poacher/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == H.real_name || b.target_hidden == H.real_name)
-			H.change_stat(STATKEY_SPD, 1)
-			H.change_stat(STATKEY_WIL, 1)

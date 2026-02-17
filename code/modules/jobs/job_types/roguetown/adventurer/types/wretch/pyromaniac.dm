@@ -8,9 +8,9 @@
 	category_tags = list(CTAG_WRETCH)
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_ALCHEMY_EXPERT)
 	subclass_stats = list(
-		STATKEY_WIL = 3,	// +1 INT and +1 CON with bounty
-		STATKEY_CON = 2,
-		STATKEY_INT = 2
+		STATKEY_WIL = 3,
+		STATKEY_CON = 3,
+		STATKEY_INT = 3
 	)
 	subclass_skills = list(
 		/datum/skill/combat/bows = SKILL_LEVEL_APPRENTICE,
@@ -74,10 +74,3 @@
 					H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/rebuke)
 					H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stoneskin) // To not be instapaincritted if you accidentally hit yourself
 		wretch_select_bounty(H)
-
-/datum/outfit/job/roguetown/wretch/pyromaniac/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == H.real_name || b.target_hidden == H.real_name)
-			H.change_stat(STATKEY_INT, 1)
-			H.change_stat(STATKEY_CON, 1)

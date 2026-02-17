@@ -15,9 +15,9 @@
 	traits_applied = list(TRAIT_AZURENATIVE, TRAIT_OUTDOORSMAN, TRAIT_RACISMISBAD, TRAIT_DODGEEXPERT, TRAIT_ARCYNE_T2)
 	//lower-than-avg stats for wretch but their traits are insanely good
 	subclass_stats = list(
-		STATKEY_STR = 2,	// +1 SPD and +1 INT with bounty
-		STATKEY_SPD = 1,
-		STATKEY_INT = 1,
+		STATKEY_STR = 2,
+		STATKEY_SPD = 2,
+		STATKEY_INT = 2,
 		STATKEY_CON = -1
 	)
 	subclass_spellpoints = 10
@@ -81,11 +81,3 @@
 				r_hand = /obj/item/rogueweapon/greatsword/elf
 				l_hand = /obj/item/rogueweapon/sword/short/elf
 
-		wretch_select_bounty(H)
-
-/datum/outfit/job/roguetown/wretch/blackoak/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == H.real_name || b.target_hidden == H.real_name)
-			H.change_stat(STATKEY_SPD, 1)
-			H.change_stat(STATKEY_INT, 1)

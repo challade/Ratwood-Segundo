@@ -9,10 +9,9 @@
 	maximum_possible_slots = 2 //Ppl dont like heavy armor antags.
 	// Heretic is by far the best class with access to rituals (as long as they play a god with ritual), holy and heavy armor. So they keep 7 points.
 	subclass_stats = list(
-		STATKEY_STR = 2,	// +1 CON and +1 SPD with bounty
-		STATKEY_CON = 1,
-		STATKEY_WIL = 1,
-		STATKEY_SPD = -1,
+		STATKEY_STR = 2,
+		STATKEY_CON = 2,
+		STATKEY_WIL = 1
 	)
 	subclass_skills = list(
 		/datum/skill/magic/holy = SKILL_LEVEL_EXPERT,
@@ -199,13 +198,6 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/wrists/roguetown/bracers, SLOT_WRISTS, TRUE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/boots/armor, SLOT_SHOES, TRUE)
 
-/datum/outfit/job/roguetown/wretch/heretic/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == H.real_name || b.target_hidden == H.real_name)
-			H.change_stat(STATKEY_CON, 1)
-			H.change_stat(STATKEY_SPD, 1)
-
 /datum/advclass/wretch/heretic/spy
 	name = "Heretic Spy"
 	tutorial = "Nimble of dagger and foot both, you are the shadowy herald of the cabal. They will not see you coming."
@@ -214,9 +206,9 @@
 	traits_applied = list(TRAIT_RITUALIST, TRAIT_DODGEEXPERT)
 	//Slower than outlaw, but a bit more PER and INT
 	subclass_stats = list(
-		STATKEY_PER = 2,	// +1 WIL and +1 SPD with bounty
-		STATKEY_WIL = 1,
-		STATKEY_SPD = 1,
+		STATKEY_PER = 2,
+		STATKEY_WIL = 2,
+		STATKEY_SPD = 2,
 		STATKEY_INT = 1
 	)
 	subclass_skills = list(
@@ -366,13 +358,6 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/roguetown/fingerless_leather, SLOT_GLOVES, TRUE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/boots/leather/reinforced, SLOT_SHOES, TRUE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/wrists/roguetown/bracers/leather/heavy, SLOT_WRISTS, TRUE)
-
-/datum/outfit/job/roguetown/wretch/hereticspy/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == H.real_name || b.target_hidden == H.real_name)
-			H.change_stat(STATKEY_WIL, 1)
-			H.change_stat(STATKEY_SPD, 1)
 
 /obj/effect/proc_holder/spell/invoked/convert_heretic
 	name = "Convert The Downtrodden"

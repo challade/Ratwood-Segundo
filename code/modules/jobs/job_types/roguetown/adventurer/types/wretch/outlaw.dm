@@ -9,8 +9,9 @@
 	subclass_languages = list(/datum/language/thievescant)
 	traits_applied = list(TRAIT_DODGEEXPERT)
 	subclass_stats = list(
-		STATKEY_SPD = 2,	// +1 SPD and +1 PER with bounty
-		STATKEY_WIL = 2
+		STATKEY_SPD = 3,
+		STATKEY_WIL = 2,
+		STATKEY_PER = 1
 	)
 	subclass_skills = list(
 		/datum/skill/misc/tracking = SKILL_LEVEL_MASTER,
@@ -77,13 +78,6 @@
 				beltl = /obj/item/rogueweapon/whip
 		wretch_select_bounty(H)
 
-/datum/outfit/job/roguetown/wretch/outlaw/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == H.real_name || b.target_hidden == H.real_name)
-			H.change_stat(STATKEY_SPD, 1)
-			H.change_stat(STATKEY_PER, 1)
-
 /datum/advclass/wretch/outlaw/marauder
 	name = "Marauder"
 	tutorial = "You are a brigand and a pillager - you prefer to get your coins with direct means from unfortunate victims."
@@ -92,9 +86,10 @@
 	subclass_languages = list(/datum/language/thievescant)
 	//Still the speed class
 	subclass_stats = list(
-		STATKEY_CON = 2,	// +1 SPD and +1 WIL with bounty
-		STATKEY_SPD = 1,
-		STATKEY_STR = 1
+		STATKEY_CON = 2,
+		STATKEY_SPD = 2,
+		STATKEY_STR = 1,
+		STATKEY_WIL = 1
 	)
 	subclass_skills = list(
 		/datum/skill/misc/tracking = SKILL_LEVEL_EXPERT,
@@ -160,10 +155,3 @@
 				l_hand = /obj/item/rogueweapon/spear/militia
 				backr = /obj/item/rogueweapon/shield/heater
 		wretch_select_bounty(H)
-
-/datum/outfit/job/roguetown/wretch/marauder/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == H.real_name || b.target_hidden == H.real_name)
-			H.change_stat(STATKEY_SPD, 1)
-			H.change_stat(STATKEY_WIL, 1)

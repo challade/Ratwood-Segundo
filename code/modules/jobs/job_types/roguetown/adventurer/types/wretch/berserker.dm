@@ -7,10 +7,12 @@
 	cmode_music = 'sound/music/cmode/antag/combat_darkstar.ogg'
 	category_tags = list(CTAG_WRETCH)
 	traits_applied = list(TRAIT_STRONGBITE, TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN)
+	// Literally same stat spread as Atgervi Shaman
 	subclass_stats = list(
-		STATKEY_STR = 2,	// +1 STR and +1 SPD with bounty
+		STATKEY_STR = 3,
 		STATKEY_CON = 2,
 		STATKEY_WIL = 1,
+		STATKEY_SPD = 1,
 		STATKEY_INT = -1,
 		STATKEY_PER = -1
 	)
@@ -87,10 +89,3 @@
 				head = /obj/item/clothing/head/roguetown/helmet/kettle
 				mask = /obj/item/clothing/mask/rogue/wildguard
 		wretch_select_bounty(H)
-
-/datum/outfit/job/roguetown/wretch/berserker/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == H.real_name || b.target_hidden == H.real_name)
-			H.change_stat(STATKEY_STR, 1)
-			H.change_stat(STATKEY_SPD, 1)

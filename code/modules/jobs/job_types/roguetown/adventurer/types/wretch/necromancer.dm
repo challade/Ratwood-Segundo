@@ -9,9 +9,10 @@
 	traits_applied = list(TRAIT_ZOMBIE_IMMUNE, TRAIT_MAGEARMOR, TRAIT_GRAVEROBBER, TRAIT_ARCYNE_T3, TRAIT_ALCHEMY_EXPERT, TRAIT_MEDICINE_EXPERT,TRAIT_RITUALIST,TRAIT_OUTLANDER,)
 	maximum_possible_slots = 2 // Going from 1 to 2, because skeleton that are summoned count AGAINST antagonist cap and they don't always shows up
 	subclass_stats = list(
-		STATKEY_INT = 3,	// +1 INT and +1 SPD with bounty
+		STATKEY_INT = 4,
 		STATKEY_PER = 2,
 		STATKEY_WIL = 1,
+		STATKEY_SPD = 1
 	)
 	subclass_spellpoints = 16
 	subclass_skills = list(
@@ -90,10 +91,3 @@
 			backr = /obj/item/rogueweapon/woodstaff/amethyst
 		if("toper-focused staff")
 			backr = /obj/item/rogueweapon/woodstaff/toper
-
-/datum/outfit/job/roguetown/wretch/necromancer/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	for(var/datum/bounty/b in GLOB.head_bounties)
-		if(b.target == H.real_name || b.target_hidden == H.real_name)
-			H.change_stat(STATKEY_INT, 1)
-			H.change_stat(STATKEY_SPD, 1)
