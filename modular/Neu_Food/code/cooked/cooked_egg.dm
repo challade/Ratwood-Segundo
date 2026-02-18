@@ -97,7 +97,7 @@
 	icon_state = "tartar"
 	foodtype = MEAT
 	rotprocess = SHELFLIFE_DECENT
-	faretype = FARE_POOR //It's raw meat and egg... come now now
+	faretype = FARE_NEUTRAL
 
 /* * * * * * * * * * * **
  *						*

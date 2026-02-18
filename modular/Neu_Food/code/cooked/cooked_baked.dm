@@ -242,7 +242,7 @@
 	tastes = list("dissapointment" = 1)
 	name = "tartar bread"
 	desc = "A slice of bread with tartar on top for the perfect breakfast. What's that stench?"
-	faretype = FARE_POOR
+	faretype = FARE_FINE
 	icon_state = "toast_tartar"
 	foodtype = GRAIN | MEAT
 
