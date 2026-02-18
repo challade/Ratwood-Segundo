@@ -202,9 +202,6 @@
 	if(!istype(user))
 		return
 	if(!user.cmode)
-		if(!user.is_literate())
-			to_chat(user, span_warning("I do not know how to write."))
-			return
 		if(heated)
 			to_chat(user, span_warning("It is too hot to change the symbols!"))
 			return
