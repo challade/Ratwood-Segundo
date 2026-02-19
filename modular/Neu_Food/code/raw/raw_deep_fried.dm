@@ -125,7 +125,7 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/toastcrumbs))
 		if(process_step != 2)
 			return
-		to_chat(user, span_notice("Coating the nitzel with toastcrumbs."))
+		to_chat(user, span_notice("Coating the frybird with toastcrumbs."))
 		if(do_after(user, short_cooktime, target = src))
 			name = "tender frybird with toastcrumbs"
 			desc = "A frybird coated in toastcrumbs. It awaits a hot oil bath."
