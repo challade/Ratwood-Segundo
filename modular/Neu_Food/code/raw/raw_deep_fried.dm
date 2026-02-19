@@ -112,7 +112,7 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/egg))
 		if(process_step != 1)
 			return
-		to_chat(user, span_notice("Cracking an egg over the nitzel."))
+		to_chat(user, span_notice("Cracking an egg over the frybird."))
 		if(do_after(user, short_cooktime, target = src))
 			playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 100, TRUE, -1)
 			name = "tender frybird with egg"
