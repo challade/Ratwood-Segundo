@@ -8,6 +8,11 @@
 // HEAD //
 //////////
 
+/datum/supply_pack/rogue/Iconoclast/wolfhelm
+	name = "Volf Plate Helm"
+	cost = 30
+	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/volfplate)
+
 /datum/supply_pack/rogue/Iconoclast/sallet
 	name = "Sallet"
 	cost = 20
@@ -109,6 +114,16 @@
 // LEGS/FEET //
 ///////////////
 
+/datum/supply_pack/rogue/Iconoclast/chainlegs
+	name = "Steel Chain Chausses"
+	cost = 20
+	contains = list(/obj/item/clothing/under/roguetown/chainlegs)
+
+/datum/supply_pack/rogue/Iconoclast/splintlegs
+	name = "Brigandine Chausses"
+	cost = 20
+	contains = list(/obj/item/clothing/under/roguetown/splintlegs)
+
 /datum/supply_pack/rogue/Iconoclast/platechausses
 	name = "Plate Chausses"
 	cost = 40
@@ -150,17 +165,17 @@
 
 /datum/supply_pack/rogue/Iconoclast/cudgel
 	name = "Cudgel"
-	cost = 20
+	cost = 10
 	contains = list(/obj/item/rogueweapon/mace/cudgel)
 
 /datum/supply_pack/rogue/Iconoclast/billhook
 	name = "Billhook"
-	cost = 10
+	cost = 15
 	contains = list(/obj/item/rogueweapon/spear/billhook)
 
 /datum/supply_pack/rogue/Iconoclast/halberd
 	name = "Halberd"
-	cost = 10
+	cost = 15
 	contains = list(/obj/item/rogueweapon/halberd)
 
 /////////////
@@ -176,3 +191,4 @@
 	name = "Kite Shield"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/shield/tower/metal)
+

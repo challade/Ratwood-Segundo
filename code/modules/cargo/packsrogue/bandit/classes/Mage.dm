@@ -29,13 +29,23 @@
 
 /datum/supply_pack/rogue/Mage/icoif
 	name = "Iron Coif"
-	cost = 10
+	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif/iron)
+
+/datum/supply_pack/rogue/Mage/coif/steel
+	name = "Steel Coif"
+	cost = 40
+	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
 
 /datum/supply_pack/rogue/Mage/gorget
 	name = "Gorget"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/gorget)
+
+/datum/supply_pack/rogue/Mage/sgorget
+	name = "Steel Gorget"
+	cost = 40
+	contains = list(/obj/item/clothing/neck/roguetown/gorget/steel)
 
 ///////////
 // CHEST //
@@ -70,6 +80,11 @@
 	name = "Hardened Leather Armor"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy)
+
+/datum/supply_pack/rogue/Mage/leather/hcoat
+	name = "Hardened Leather Coat"
+	cost = 30
+	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat)
 
 ///////////////////
 // WRISTS/GLOVES //
@@ -135,12 +150,22 @@
 
 /datum/supply_pack/rogue/Mage/sdagger
 	name = "Silver Dagger"
-	cost = 100
+	cost = 60
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver)
+
+/datum/supply_pack/rogue/Mage/asdagger
+	name = "Arcyne Silver Dagger"
+	cost = 120
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver/arcyne)
 
 ///////////
 // MAGIC //
 ///////////
+
+/datum/supply_pack/rogue/Mage/magebagempty
+	name = "Empty Mage Bag"
+	cost = 5
+	contains = list(/obj/item/storage/magebag)
 
 /datum/supply_pack/rogue/Mage/unfinbook
 	name = "Unfinished Spellbook"

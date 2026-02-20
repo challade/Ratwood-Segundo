@@ -35,6 +35,7 @@
 		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/shields = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/tracking = SKILL_LEVEL_APPRENTICE,
 	)
 
 /datum/outfit/job/roguetown/bandit/brigand/pre_equip(mob/living/carbon/human/H)
@@ -67,7 +68,7 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			if("Common Soldiery (Polearms & Swords)") //Steel arming sword & shield. On-spawn bolts, but no crossbow.
+			if("Common Soldiery (Polearms & Swords)") //Steel arming sword & shield.
 				backl= /obj/item/rogueweapon/shield/iron
 				beltr = /obj/item/rogueweapon/sword
 				beltl = /obj/item/rogueweapon/scabbard/sword
@@ -78,7 +79,7 @@
 			if("The Nefarious Dusthead (Knives, Climbing & Athletics)") //Dagger, athletics, and OK lockpicking. You will never be a Knave. This is mostly a for-fun class, where else have you seen a knife strength build?
 				beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 				backl = /obj/item/rogueweapon/whip
-				beltl = /obj/item/lockpickring/mundane	//not replaceable unless a knave joins. intentional.
+				beltl = /obj/item/lockpickring/mundane
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/misc/climbing, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_EXPERT, TRUE)

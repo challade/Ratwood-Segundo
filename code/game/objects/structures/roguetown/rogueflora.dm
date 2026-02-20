@@ -466,6 +466,17 @@
 	icon_state = "tallbush[pick(1,2)]"
 
 
+/obj/structure/flora/roguegrass/bush/winter
+	icon_state = "bush1winter"
+/obj/structure/flora/roguegrass/bush/winter/Initialize()
+	. = ..()
+	icon_state = "bush[pick(1,2,3,4)]winter"
+/obj/structure/flora/roguegrass/bush/winter/wall
+	icon_state = "bush5winter"
+/obj/structure/flora/roguegrass/bush/wall/winter/Initialize()
+	. = ..()
+	icon_state = "bush[pick(5,6)]winter"
+
 /obj/structure/flora/rogueshroom
 	name = "mushroom"
 	desc = "Mushrooms are the only happy beings in this land."

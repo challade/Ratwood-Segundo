@@ -173,6 +173,8 @@ SUBSYSTEM_DEF(gamemode)
 	/// Calculated effective pop after weighing garrison & holy warriors at 2x
 	var/effective_pop = 0
 
+	var/storyteller_name = "Unknown"
+
 	/// Is storyteller secret or not
 	var/secret_storyteller = FALSE
 
@@ -735,6 +737,7 @@ SUBSYSTEM_DEF(gamemode)
 	var/datum/storyteller/storytypecasted = selected_storyteller
 	to_chat(world, span_notice("<b>Storyteller is [initial(storytypecasted.name)]!</b>"))
 	to_chat(world, span_notice("[initial(storytypecasted.vote_desc)]"))
+	storyteller_name = initial(storytypecasted.name)
 
 ///return a weighted list of all storytellers that are currently valid to roll, if return_types is set then we will return types instead of instances
 /datum/controller/subsystem/gamemode/proc/get_valid_storytellers(return_types = FALSE)
@@ -763,6 +766,9 @@ SUBSYSTEM_DEF(gamemode)
 	if(!secret_storyteller)
 		send_to_playing_players(span_notice("<b>Storyteller is [current_storyteller.name]!</b>"))
 		send_to_playing_players(span_notice("[current_storyteller.welcome_text]"))
+		storyteller_name = current_storyteller.name
+	else
+		storyteller_name = initial(storyteller_name)
 
 /// Panel containing information, variables and controls about the gamemode and scheduled event
 /datum/controller/subsystem/gamemode/proc/admin_panel(mob/user)

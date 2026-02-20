@@ -8,6 +8,16 @@
 // HEAD //
 //////////
 
+/datum/supply_pack/rogue/Knight/wildmask
+	name = "Wildguard Mask"
+	cost = 10
+	contains = list(/obj/item/clothing/mask/rogue/wildguard)
+
+/datum/supply_pack/rogue/Knight/steelmask
+	name = "Steel Mask"
+	cost = 10
+	contains = list(/obj/item/clothing/mask/rogue/facemask/steel)
+
 /datum/supply_pack/rogue/Knight/wolfhelm
 	name = "Volf Plate Helm"
 	cost = 30
@@ -66,6 +76,11 @@
 	name = "Steel Coif"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
+
+/datum/supply_pack/rogue/Knight/coif/fullsteel
+	name = "Full Steel Coif"
+	cost = 20
+	contains = list(/obj/item/clothing/neck/roguetown/chaincoif/full)
 
 /datum/supply_pack/rogue/Knight/coif/hpcoif
 	name = "Heavy Padded Coif"
@@ -268,20 +283,30 @@
 	cost = 20
 	contains = list(/obj/item/rogueweapon/mace/steel)
 
-/datum/supply_pack/rogue/Knight/silvermace
-	name = "Silver-plated Mace"
-	cost = 60
-	contains = list(/obj/item/rogueweapon/mace/steel/silver)
-
-/datum/supply_pack/rogue/knight/warhammersteel
+/datum/supply_pack/rogue/Knight/warhammersteel
 	name = "Steel Warhammer"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/mace/warhammer/steel)
 
-/datum/supply_pack/rogue/knight/warhammersilver
+/datum/supply_pack/rogue/Knight/silvermace
+	name = "Silver Mace"
+	cost = 60
+	contains = list(/obj/item/rogueweapon/mace/steel/silver)
+
+/datum/supply_pack/rogue/Knight/warhammersilver
 	name = "Silver Warhammer"
 	cost = 60
 	contains = list(/obj/item/rogueweapon/mace/warhammer/steel/silver)
+
+/datum/supply_pack/rogue/Knight/silverlsword
+	name = "Silver Long Sword"
+	cost = 60
+	contains = list(/obj/item/rogueweapon/sword/long/silver)
+
+/datum/supply_pack/rogue/Knight/silverpoleaxe
+	name = "Silver Poleaxe"
+	cost = 60
+	contains = list(/obj/item/rogueweapon/greataxe/silver)
 
 /////////////
 // SHIELDS //

@@ -1092,6 +1092,10 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 
+/obj/item/clothing/cloak/cape/inquisitor/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/roguetown/cloak)
+
 /obj/item/clothing/cloak/cape/rogue
 	name = "cape"
 	icon_state = "roguecape"

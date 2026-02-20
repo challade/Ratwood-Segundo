@@ -37,6 +37,11 @@
 	cost = 30
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
 
+/datum/supply_pack/rogue/Knave/coif/hpcoif
+	name = "Heavy Padded Coif"
+	cost = 35
+	contains = list(/obj/item/clothing/neck/roguetown/coif/heavypadding)
+
 ///////////
 // CHEST //
 ///////////
@@ -118,16 +123,6 @@
 // WEAPONS - MELEE //
 /////////////////////
 
-/datum/supply_pack/rogue/Knave/dagger
-	name = "Iron Dagger"
-	cost = 10
-	contains = list(/obj/item/rogueweapon/huntingknife/idagger)
-
-/datum/supply_pack/rogue/Knave/daggerss
-	name = "Steel Dagger"
-	cost = 20
-	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel)
-
 /datum/supply_pack/rogue/Knave/placejapan
 	name = "Kazengunese Dagger"
 	cost = 25
@@ -187,6 +182,16 @@
 	cost = 20
 	contains = list(/obj/item/storage/belt/rogue/leather/knifebelt/black/steel)
 
+/datum/supply_pack/rogue/Knave/steeltossblade
+	name = "Single Steel Tossblade"
+	cost = 5
+	contains = list(/obj/item/rogueweapon/huntingknife/throwingknife/steel)
+
+/datum/supply_pack/rogue/Knave/silvertossblade
+	name = "Single Silver Tossblade"
+	cost = 25 // Because I can imagine how annoying these would be. 
+	contains = list(/obj/item/rogueweapon/huntingknife/throwingknife/silver)
+
 /////////////////////////////
 // WEAPONS - RANGED - AMMO //
 /////////////////////////////
@@ -222,6 +227,17 @@
 	/obj/item/ammo_casing/caseless/rogue/arrow/water,
 	)
 
+/datum/supply_pack/rogue/Knave/Wbolts
+	name = "Water Bolts (x5)"
+	cost = 1
+	contains = list(
+	/obj/item/ammo_casing/caseless/rogue/bolt/water,
+	/obj/item/ammo_casing/caseless/rogue/bolt/water,
+	/obj/item/ammo_casing/caseless/rogue/bolt/water,
+	/obj/item/ammo_casing/caseless/rogue/bolt/water,
+	/obj/item/ammo_casing/caseless/rogue/bolt/water,
+	)
+
 /datum/supply_pack/rogue/Knave/Parrows
 	name = "Poisoned Arrow"
 	cost = 3
@@ -250,3 +266,23 @@
 	name = "Lockpick ring"
 	cost = 10
 	contains = list(/obj/item/lockpickring/mundane)
+
+/datum/supply_pack/rogue/Knave/stampoison
+	name = "Fatigue Poison"
+	cost = 60
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/stampoison)
+
+/datum/supply_pack/rogue/Knave/strongstampoison
+	name = "Strong Fatigue Poison"
+	cost = 150
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/strongstampoison)
+
+/datum/supply_pack/rogue/Knave/jackberrypoison
+	name = "Jackberry Poison"
+	cost = 40 // You can make it yourself.
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/berrypoison)
+
+/datum/supply_pack/rogue/Knave/antidote
+	name = "Antidote"
+	cost = 40 // Friendly fire or misshaps.
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/antidote)
