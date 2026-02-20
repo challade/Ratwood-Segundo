@@ -7,7 +7,7 @@
 	outfit = /datum/outfit/job/roguetown/bandit/pioneer
 	category_tags = list(CTAG_BANDIT)
 	maximum_possible_slots = 1//They're limited because these guys can LEVEL THE TOWN. RAAAAAAAAAA!!!!!!
-	traits_applied = list(TRAIT_OUTDOORSMAN, TRAIT_WEBWALK)//GET THIS SHIT OFF OF ME!!!!!
+	traits_applied = list(TRAIT_OUTDOORSMAN, TRAIT_WEBWALK, TRAIT_FUSILIER)//GET THIS SHIT OFF OF ME!!!!!
 	subclass_stats = list(
 		STATKEY_INT = 3,
 		STATKEY_LCK = 2,
@@ -16,6 +16,7 @@
 		STATKEY_CON = 2,
 	)
 	subclass_skills = list(
+		/datum/skill/combat/firearms = SKILL_LEVEL_EXPERT,//He works with explosives. And firearms are otherwise unobtanium. Just fluff.
 		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,//Bare minimum for dedicated classes. Here because handyman Joe wrastling is funny.
 		/datum/skill/combat/axes = SKILL_LEVEL_EXPERT,//For the shovel...
 		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,//For the backup knives.

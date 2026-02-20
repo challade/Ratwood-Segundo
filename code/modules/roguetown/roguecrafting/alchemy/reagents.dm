@@ -192,7 +192,7 @@
 
 /datum/reagent/buff/perception
 	name = STATKEY_PER
-	color = "#ffff00"
+	color = "#e9e98c"
 	taste_description = "cat piss"
 	metabolization_rate = REAGENTS_METABOLISM * 0.05
 
@@ -221,7 +221,7 @@
 
 /datum/reagent/buff/endurance
 	name = STATKEY_WIL
-	color = "#ffff00"
+	color = "#e2c3e1"
 	taste_description = "oversweetened milk"
 
 /datum/reagent/buff/endurance/on_mob_life(mob/living/carbon/M)
@@ -230,7 +230,7 @@
 
 /datum/reagent/buff/speed
 	name = STATKEY_SPD
-	color = "#ffff00"
+	color = "#cea63a"
 	taste_description = "raw egg yolk"
 
 /datum/reagent/buff/speed/on_mob_life(mob/living/carbon/M)
