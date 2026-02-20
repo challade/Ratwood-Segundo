@@ -248,7 +248,7 @@
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(!experimental_inhand)
 		return
-	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/garlick/rogue))
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/veg/garlick_clove))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
 			if(do_after(user,3 SECONDS, target = src))
