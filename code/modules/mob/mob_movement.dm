@@ -597,7 +597,7 @@
 	var/light_threshold = rogue_sneaking_light_threshhold
 	if(mind)
 		used_time = max(used_time - (get_skill_level(/datum/skill/misc/sneaking) * 8), 0)
-		light_threshold += (get_skill_level(/datum/skill/misc/sneaking) / 200)
+		light_threshold += (get_skill_level(/datum/skill/misc/sneaking) / 20)
 
 	if(rogue_sneaking || reset) //If sneaking, check if they should be revealed
 		var/should_reveal = FALSE
