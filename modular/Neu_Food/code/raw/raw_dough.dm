@@ -271,7 +271,7 @@
 		prepare_handpie(I, user, /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/apple)
 	else if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced))
 		prepare_handpie(I, user, /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/potato)
-	else if(istype(I, /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue))//This produces 3 instead of 2 so it'd be obvious go to.
+	else if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced))//This produces 3 instead of 2 so it'd be obvious go to.
 		prepare_handpie(I, user, /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/cabbage)
 	else
 		return ..()
