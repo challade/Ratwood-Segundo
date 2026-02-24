@@ -285,7 +285,7 @@
 	warnie = "sydwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE
-	chargedloop = /datum/looping_sound/invokeholy
+	chargedloop = /datum/looping_sound/invokeascendant
 	sound = 'sound/magic/zizo_snuff.ogg'
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
