@@ -183,8 +183,13 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel/proc/maturing_done()
 	playsound(src.loc, 'modular/Neu_Food/sound/rustle2.ogg', 100, TRUE, -1)
-	new /obj/item/reagent_containers/food/snacks/rogue/cheddar(loc)
-	new /obj/item/natural/cloth(loc)
+	var/obj/item/reagent_containers/food/snacks/rogue/cheddar/cheese = new(loc)
+	var/obj/item/natural/cloth/cloth = new(loc)
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		moveToNullspace() //To free the hand up
+		H.put_in_hands(cheese)
+		H.put_in_hands(cloth)
 	qdel(src)
 
 
