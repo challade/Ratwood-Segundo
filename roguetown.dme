@@ -3008,5 +3008,6 @@
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\rogue_corpse.dm"
 #include "modular_hearthstone\code\modules\reagents\reagent_containers\lux.dm"
 #include "modular_helmsguard\code\modules\mobs\farm\horse.dm"
+#include "modular_rmh\code\modules\clothing\armor\corset_color.dm"
 #include "modular_twilight_axis\code\game\objects\items\scabbard.dm"
 // END_INCLUDE
